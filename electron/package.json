@@ -1,0 +1,51 @@
+{
+  "name": "chat-electron",
+  "version": "0.1.0",
+  "private": true,
+  "main": "public/electron.js",
+  "dependencies": {
+    "@slack/client": "^4.4.0",
+    "@types/simple-oauth2": "^2.2.1",
+    "electron-is-dev": "^0.3.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "react-scripts": "^2.1.1",
+    "simple-oauth2": "^2.2.1",
+    "styled-components": "^3.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "build --em.main=build/electron.js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "build": {
+    "appId": "com.example.chat-electron",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.15",
+    "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
+    "concurrently": "^3.6.1",
+    "electron": "^2.0.7",
+    "electron-builder": "^20.27.1",
+    "typescript": "^3.2.2",
+    "wait-on": "^2.1.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
