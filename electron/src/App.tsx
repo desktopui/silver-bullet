@@ -4,7 +4,7 @@ import LoginScreen from "./LoginScreen";
 
 class App extends React.Component {
   public render() {
-    return <LoginScreen />;
+    return <LoginScreen onAuthCompleted={code => console.log(code)} />;
   }
 }
 

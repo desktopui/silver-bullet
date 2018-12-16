@@ -1,8 +1,8 @@
 https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ
 
-Instead of ToDo list, we are going to implement a minimal chat example that contains:
+Instead of an TODO list, we are going to implement a minimal chat example that contains:
 
-- Http request
+- Http requests
 - Websockets
 - Animation
 - Basic layout
@@ -43,3 +43,7 @@ It surely will narrow down the area for desktop apps. Apple recently [turned bac
 ### So what should I use? Please, no "it depends" answer.
 
 But it really depends. From a plain old web application with offline compabilities to fully native there are scale with different set of trade-offs.
+
+## Electron
+
+Electron has a its own renderer and some APIs that extend browser ones, but you're still have to implement many things in a platform-dependent way.
