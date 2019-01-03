@@ -1,4 +1,4 @@
-https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ
+Join DesktopUI slack: https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ
 
 Instead of an TODO list, we are going to implement a minimal chat example that contains:
 
@@ -13,13 +13,13 @@ Instead of an TODO list, we are going to implement a minimal chat example that c
 - Sort of Advanced UI: inversible scroll and/or virtualized list
 - Basic tests
 
-It's not that kind of test "let's measure some metrics, get digits and choose the best", like you read when choosing a TV. It's merely an attempt
+It's not that kind of test "let's measure some metrics, get scores and choose the best", like you read when choosing a TV. It's merely an attempt
 to explore current possibilities to write GUI and learn something new.
 
 ## Contents
 
-1. [Intro](#Intro)
-1. [Electron](#Electron)
+1. [Part 0 - Intro](#Intro)
+1. [Part I - Electron](#Electron)
 1. https://github.com/Boscop/web-view
 1. http://tomsik.cz/node-webrender/
 1. React Native from Microsoft
@@ -31,6 +31,7 @@ to explore current possibilities to write GUI and learn something new.
 1. Qt
 1. Swing Java
 1. JavaFX
+1. The framework SublimeText is using.
 
 - _Bonus:_ Marzipan
 
@@ -46,4 +47,5 @@ But it really depends. From a plain old web application with offline compabiliti
 
 ## Electron
 
-Electron has a its own renderer and some APIs that extend browser ones, but you're still have to implement many things in a platform-dependent way.
+<!--
+Electron has a its own renderer and some APIs that extend browser ones, but you're still have to implement many things in a platform-dependent way. -->
