@@ -12,7 +12,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "lib": ["esnext"]
 }
