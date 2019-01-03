@@ -1,4 +1,8 @@
-Join DesktopUI slack: https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ
+Join DesktopUI slack:
+
+[![](https://img.shields.io/badge/desktopui-slack-green.svg?logo=slack)](https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ)
+
+![a prototype for a chat app](https://user-images.githubusercontent.com/1004115/50629735-e37d0d80-0f4e-11e9-9c2e-3081e943879e.png)
 
 Instead of an TODO list, we are going to implement a minimal chat example that contains:
 
@@ -18,22 +22,20 @@ to explore current possibilities to write GUI and learn something new.
 
 ## Contents
 
-1. [Part 0 - Intro](#Intro)
-1. [Part I - Electron](#Electron)
-1. https://github.com/Boscop/web-view
-1. http://tomsik.cz/node-webrender/
-1. React Native from Microsoft
-1. React Native for Qt from Status
-1. Flutter for desktop
-1. Libui
-   5.1 Proton-native
-   5.2 Bindings for ..
-1. Qt
-1. Swing Java
-1. JavaFX
-1. The framework SublimeText is using.
-
-- _Bonus:_ Marzipan
+- ### [Intro](#Intro)
+- ### [I. Electron](#Electron)
+- ### https://github.com/Boscop/web-view
+- ### http://tomsik.cz/node-webrender/
+- ### React Native from Microsoft
+- ### React Native for Qt from Status
+- ### Flutter for desktop
+- ### Libui (proton-native)
+- ### Libui (bindings for Rust/Go)
+- ### Qt
+- ### Swing Java
+- ### JavaFX
+- ### The framework SublimeText is using.
+- ### _Bonus:_ Marzipan
 
 ## Intro
 
