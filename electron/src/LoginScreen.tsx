@@ -74,7 +74,6 @@ export default class LoginScreen extends React.Component<Props> {
         })
           .then(res => res.json())
           .then(res => {
-            console.log(res);
             if (res.access_token) {
               this.props.onAuthCompleted(res.access_token);
             } else {

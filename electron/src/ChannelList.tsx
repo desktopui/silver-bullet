@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { WebClient } from "@slack/client";
 import { useAsyncEffect } from "use-async-effect";
+import { SlackConversation, getAllChannels } from "./api";
 
 const Channels = styled.div`
   width: 30%;
@@ -12,44 +13,31 @@ const Channels = styled.div`
 
 const Channel = styled.a<{ active: boolean }>`
   padding: 0.25em 2em;
-  color: white;
+  color: ${props => (props.active ? "white" : "#eee")};
   display: block;
+  font-size: 1.2em;
   text-decoration: none;
   background-color: ${props => (props.active ? "darkkhaki" : "transparent")};
-
   &:hover {
     background-color: ${props => (props.active ? "darkkhaki" : "gray")};
   }
 `;
 
+const Loading = styled.div`
+  padding: 2em;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+`;
+
 const Hashtag = styled.span`
-  color: #aaa;
+  color: #ccc;
   padding-right: 5px;
 `;
 
-export interface SlackConversation {
-  name: string;
-  id: string;
-  topic: {
-    value: string;
-  };
-}
-
-function getAllChannels(web: WebClient): Promise<SlackConversation[]> {
-  // See: https://api.slack.com/methods/conversations.list#arguments
-  const param = {
-    exclude_archived: true,
-    types: "public_channel",
-    limit: 20
-  };
-
-  return web.conversations.list(param).then(results => {
-    return (results as any).channels as Array<SlackConversation>;
-  });
-}
-
 const useSlack = (
-  token: string
+  token: string,
+  onFirst: (conversation: SlackConversation) => void
 ): { data: Array<SlackConversation>; loading: boolean } => {
   const [data, setData] = useState([] as Array<SlackConversation>);
   const [loading, setLoading] = useState(true);
@@ -59,6 +47,9 @@ const useSlack = (
       const web = new WebClient(token);
       try {
         const response = await getAllChannels(web);
+        if (response.length > 0) {
+          onFirst(response[0]);
+        }
         setData(response);
       } catch (e) {
         setData(e);
@@ -82,10 +73,10 @@ export default function ChannelsList({
   activeChannel,
   onChannelSelect
 }: ChannelsListProps) {
-  const { data, loading } = useSlack(token);
+  const { data, loading } = useSlack(token, first => onChannelSelect(first));
   return (
     <Channels>
-      {loading && <span>Loading...</span>}
+      {loading && <Loading>Loading...</Loading>}
       {data.map(c => (
         <Channel
           active={activeChannel ? c.id == activeChannel.id : false}

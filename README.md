@@ -2,18 +2,19 @@ Join DesktopUI slack:
 
 [![](https://img.shields.io/badge/desktopui-slack-green.svg?logo=slack)](https://join.slack.com/t/desktopui/shared_invite/enQtNDE2MDA1MzIwMjU3LTNmMWFkOTUzNWQ0MDNiOTFiZTY1NTM0NDE3MTFjNzkzZDZmOTJlMGI4MmRlZjA3ZDk2NjM1YTY0MzA4ZThhMDQ)
 
-![a prototype for a chat app](https://user-images.githubusercontent.com/1004115/50629735-e37d0d80-0f4e-11e9-9c2e-3081e943879e.png)
+<img src="https://user-images.githubusercontent.com/1004115/50629735-e37d0d80-0f4e-11e9-9c2e-3081e943879e.png" alt="a prototype for a chat app screenshot" width="400"  />
 
-Instead of an TODO list, we are going to implement a minimal chat example that contains:
+Instead of an ToDo list, we are going to implement a minimal chat example that contains:
 
 - Http requests
 - Websockets
 - Animation
 - Basic layout
 - A piece of code that uses platform API that browsers don't have (yet)
-- Dark theme in Mojavi
-- OS integration (showing if you're using ide in status - thus scanning the currently running process)
+- Theme support and/or the dark theme in Mojavi
+- Any sort of OS integration (showing if you're using ide in status - thus scanning the currently running process)
 - Accessiblity
+- i18n
 - Sort of Advanced UI: inversible scroll and/or virtualized list
 - Basic tests
 

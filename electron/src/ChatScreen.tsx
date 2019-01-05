@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
 import styled from "styled-components";
-import ChannelsList, { SlackConversation } from "./ChannelsList";
+import ChannelList from "./ChannelList";
 import ChannelHeader from "./ChannelHeader";
+import ChatMessages from "./ChatMessages";
+import { SlackConversation } from "./api";
 
 const Frame = styled.div`
   flex: 1;
@@ -40,7 +42,7 @@ export default function ChatScreen({ token }: ChatScreenProps) {
   console.log(activeChannel);
   return (
     <Frame>
-      <ChannelsList
+      <ChannelList
         token={token}
         activeChannel={activeChannel}
         onChannelSelect={channel => setActiveChannel(channel)}
@@ -51,11 +53,7 @@ export default function ChatScreen({ token }: ChatScreenProps) {
             title={activeChannel.name}
             subtitle={activeChannel.topic.value}
           />
-          <div>
-            {messages.map((m, i) => (
-              <Message key={i}>{m.text}</Message>
-            ))}
-          </div>
+          <ChatMessages token={token} activeChannel={activeChannel} />
           <div>
             <Input placeholder="Write a message..." />
           </div>
