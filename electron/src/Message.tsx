@@ -20,7 +20,7 @@ const AvatarContainer = styled.div`
   align-items: center;
 `;
 export const Avatar = styled.img`
-  border-radius: 18px;
+  border-radius: 6px;
   margin-right: 0.5em;
 `;
 
@@ -77,7 +77,7 @@ const NameContainer = styled.div`
 const Time = styled.span`
   color: gray;
   font-size: 0.8em;
-  margin-left: 1em;
+  margin-left: 0.7em;
 `;
 
 function toDate(timestamp: string): Moment {
@@ -102,10 +102,9 @@ export function Message({ message, prevMessage, user, users }: MessageProps) {
     <div>
       {isNewDay && <DateSeparator timestamp={message.ts} />}
       <RowWrapper>
-        {/* {Object.keys(message).join(" ")} */}
         <AvatarContainer>
           {isNewUser && (
-            <Avatar src={user.profile.image_48} width="36" height="36" />
+            <Avatar src={user.profile.image_72} width="36" height="36" />
           )}
         </AvatarContainer>
         <div>
@@ -140,6 +139,6 @@ function extractMentions(
     if (user && user.id == currentUser.id) {
       return "";
     }
-    return `__${user ? user.name : p1}__`;
+    return `__@${user ? user.profile.display_name : p1}__`;
   });
 }

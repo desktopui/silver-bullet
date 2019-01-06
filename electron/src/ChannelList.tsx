@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useSlackApi, SlackConversation, getAllChannels } from "./api";
+import { useSlackApi, SlackConversation, getAllChannels, useRTM } from "./api";
 
 const Channels = styled.div`
   width: 30%;
   min-width: 200px;
-  background: #7d6969;
+  background: #695151;
   padding: 2em 0em;
 `;
 
@@ -49,6 +49,7 @@ export default function ChannelsList({
     async () => await getAllChannels(token)
   );
 
+  console.log(channels);
   return (
     <Channels>
       {loading && <Loading>Loading...</Loading>}

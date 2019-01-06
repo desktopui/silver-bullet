@@ -23,7 +23,6 @@ const Picture = styled.img`
 `;
 
 export default function Attachment(props: SlackAttachment) {
-  console.log(props);
   return (
     <Wrapper>
       <Capture>{props.title}</Capture>

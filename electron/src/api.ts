@@ -1,6 +1,6 @@
-import { WebClient } from "@slack/client";
+import { WebClient, RTMClient } from "@slack/client";
 import { useAsyncEffect } from "use-async-effect";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export interface SlackConversation {
   name: string;
@@ -50,7 +50,8 @@ export async function getAllChannels(
   const param = {
     exclude_archived: true,
     types: "public_channel",
-    limit: 20
+    limit: 20,
+    unreads: true
   };
 
   return web.conversations.list(param).then(results => {
@@ -126,4 +127,11 @@ export function useSlackApi<T>(
     [prop]
   );
   return [data, loading];
+}
+
+export function useRTM(token: string) {
+  useEffect(() => {
+    const rtm = new RTMClient(token);
+    rtm.start().then(res => console.log(res));
+  }, []);
 }

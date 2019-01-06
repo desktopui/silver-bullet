@@ -11,8 +11,9 @@ const ChannelH1 = styled.div`
 `;
 
 const Subtitle = styled.div`
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #888;
+  margin-top: 0.2em;
 `;
 
 export default function ChannelHeader({
