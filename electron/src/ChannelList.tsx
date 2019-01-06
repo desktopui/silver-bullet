@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { WebClient } from "@slack/client";
-import { useAsyncEffect } from "use-async-effect";
 import { useSlackApi, SlackConversation, getAllChannels } from "./api";
 
 const Channels = styled.div`
@@ -50,8 +48,6 @@ export default function ChannelsList({
     activeChannel,
     async () => await getAllChannels(token)
   );
-
-  console.log(channels);
 
   return (
     <Channels>

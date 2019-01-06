@@ -1,6 +1,5 @@
 const electron = require("electron");
-console.log(electron);
-const { app, protocol } = electron;
+const { app, protocol, session, ipcMain } = electron;
 const BrowserWindow = electron.BrowserWindow;
 
 const path = require("path");
@@ -14,6 +13,31 @@ function devToolsLog(s) {
   if (mainWindow && mainWindow.webContents) {
     mainWindow.webContents.executeJavaScript(`console.log("${s}")`);
   }
+}
+
+function setAuthorizationHeader(token) {
+  const filter = {
+    urls: ["http://*/*", "https://*/*"]
+  };
+  session.defaultSession.webRequest.onBeforeSendHeaders(
+    filter,
+    (details, callback) => {
+      if (
+        details.resourceType === "image" &&
+        details.url.indexOf("files.slack") > -1
+      ) {
+        const requestHeaders = {
+          ...details.requestHeaders,
+          ...{
+            ["Authorization"]: `Bearer ${token}`
+          }
+        };
+        callback({ cancel: false, requestHeaders });
+      } else {
+        callback({ cancel: false });
+      }
+    }
+  );
 }
 
 function createWindow() {
@@ -34,6 +58,10 @@ function createWindow() {
     devToolsLog(url);
     mainWindow.webContents.send("oauth-callback", url);
   });
+
+  ipcMain.on("set-auth-header", (event, token) => {
+    setAuthorizationHeader(token);
+  });
 }
 
 app.on("ready", createWindow);
@@ -43,12 +71,6 @@ app.on("window-all-closed", () => {
     app.quit();
   } else {
     mainWindow = null;
-  }
-});
-
-app.on("activate", function() {
-  if (mainWindow === null) {
-    createWindow();
   }
 });
 

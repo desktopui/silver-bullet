@@ -4,6 +4,7 @@ import { SlackMessage, SlackUser } from "./api";
 import moment, { Moment } from "moment";
 import Markdown from "react-markdown";
 import Link from "./Link";
+import Attachment from "./Attachment";
 
 export const RowWrapper = styled.div`
   display: flex;
@@ -26,11 +27,10 @@ export const Avatar = styled.img`
 export const MessageText = styled.p<{ system: boolean }>`
   color: ${props => (props.system ? "gray" : "black")};
   margin: 0em;
-  line-height: 1em;
-  padding: 0.3em 0;
+  line-height: 1.5em;
 `;
 
-const P = styled.span``;
+const MarkdownP = styled.span``;
 
 const calendarSpec = {
   sameDay: "[Today]",
@@ -84,15 +84,14 @@ function toDate(timestamp: string): Moment {
   return moment(parseFloat(timestamp) * 1000);
 }
 
-export function Message({
-  message,
-  prevMessage,
-  user
-}: {
+interface MessageProps {
   message: SlackMessage;
   prevMessage?: SlackMessage;
   user: SlackUser;
-}) {
+  users: SlackUser[];
+}
+
+export function Message({ message, prevMessage, user, users }: MessageProps) {
   const isNewDay = prevMessage
     ? toDate(message.ts).diff(toDate(prevMessage.ts), "days") > 0
     : true;
@@ -103,6 +102,7 @@ export function Message({
     <div>
       {isNewDay && <DateSeparator timestamp={message.ts} />}
       <RowWrapper>
+        {/* {Object.keys(message).join(" ")} */}
         <AvatarContainer>
           {isNewUser && (
             <Avatar src={user.profile.image_48} width="36" height="36" />
@@ -115,10 +115,11 @@ export function Message({
               <Time>{toDate(message.ts).format("HH:mm")}</Time>
             </NameContainer>
           )}
+          {message.files && <Attachment {...message.files[0]} />}
           <MessageText system={!!message.subtype}>
             <Markdown
-              source={extractMentions(message.text, [])}
-              renderers={{ link: Link, paragraph: P }}
+              source={extractMentions(message.text, user, users)}
+              renderers={{ link: Link, paragraph: MarkdownP }}
             />
           </MessageText>
         </div>
@@ -128,7 +129,17 @@ export function Message({
 }
 
 const regex = /<@(.*)>/gm;
-function extractMentions(message: string, users: Array<SlackUser>) {
+function extractMentions(
+  message: string,
+  currentUser: SlackUser,
+  users: Array<SlackUser>
+) {
   // <@UC7QVJNRW> has joined the channel
-  return message.replace(regex, (s, p1, p2) => `__${p1}__`);
+  return message.replace(regex, (s, p1) => {
+    const user = users.find(u => u.id == p1);
+    if (user && user.id == currentUser.id) {
+      return "";
+    }
+    return `__${user ? user.name : p1}__`;
+  });
 }

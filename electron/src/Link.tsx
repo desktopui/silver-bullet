@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ReactElement } from "react";
 const electron = (window as any).require("electron");
 
 export interface LinkProps {
-  children: string;
+  children: string | ReactElement<any>;
   href: string;
   className?: string;
 }

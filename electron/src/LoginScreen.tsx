@@ -3,7 +3,8 @@ import * as React from "react";
 import * as Oauth2 from "simple-oauth2";
 import styled from "styled-components";
 import parse from "url-parse";
-import Link, { LinkProps } from "./Link";
+import Link from "./Link";
+import { electron } from "./electron";
 
 const Block = styled.div`
   flex: 1;
@@ -48,8 +49,6 @@ const LinkButton = styled(Link)`
   font-size: 1.5em;
   color: palevioletred;
 `;
-
-const electron = (window as any).require("electron");
 
 export default class LoginScreen extends React.Component<Props> {
   componentDidMount() {

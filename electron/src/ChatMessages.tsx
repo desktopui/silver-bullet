@@ -56,6 +56,7 @@ function ChatMessages({ token, activeChannel }: ChatMessagesProps) {
             message={message}
             prevMessage={messages[index + 1]}
             user={users.find(u => u.id == message.user)!}
+            users={users}
           />
         ))}
     </Frame>
