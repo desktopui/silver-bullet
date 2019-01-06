@@ -18,7 +18,11 @@ export interface SlackMessage {
   user: string;
 }
 
-export function getAllChannels(web: WebClient): Promise<SlackConversation[]> {
+export async function getAllChannels(
+  token: string
+): Promise<SlackConversation[]> {
+  const web = new WebClient(token);
+
   // See: https://api.slack.com/methods/conversations.list#arguments
   const param = {
     exclude_archived: true,
@@ -27,11 +31,15 @@ export function getAllChannels(web: WebClient): Promise<SlackConversation[]> {
   };
 
   return web.conversations.list(param).then(results => {
-    return (results as any).channels as Array<SlackConversation>;
+    if (results.ok) {
+      return (results as any).channels as Array<SlackConversation>;
+    } else {
+      throw new Error(results.error);
+    }
   });
 }
 
-export function fetchMessages(
+export async function fetchMessages(
   token: string,
   activeChannel: SlackConversation
 ): Promise<Array<SlackMessage>> {
@@ -71,6 +79,7 @@ export function fetchUsers(token: string): Promise<Array<SlackUser>> {
   });
 }
 
+// TODO: rewrite with Suspense
 export function useSlackApi<T>(
   prop: any,
   call: () => Promise<T[]>
@@ -84,7 +93,8 @@ export function useSlackApi<T>(
         const response = await call();
         setData(response);
       } catch (e) {
-        setData(e);
+        alert(e.message);
+        setData([]);
       }
       setLoading(false);
     },

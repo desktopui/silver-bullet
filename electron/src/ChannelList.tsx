@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { WebClient } from "@slack/client";
 import { useAsyncEffect } from "use-async-effect";
-import { SlackConversation, getAllChannels } from "./api";
+import { useSlackApi, SlackConversation, getAllChannels } from "./api";
 
 const Channels = styled.div`
   width: 30%;
@@ -35,33 +35,6 @@ const Hashtag = styled.span`
   padding-right: 5px;
 `;
 
-const useSlack = (
-  token: string,
-  onFirst: (conversation: SlackConversation) => void
-): { data: Array<SlackConversation>; loading: boolean } => {
-  const [data, setData] = useState([] as Array<SlackConversation>);
-  const [loading, setLoading] = useState(true);
-
-  useAsyncEffect(
-    async () => {
-      const web = new WebClient(token);
-      try {
-        const response = await getAllChannels(web);
-        if (response.length > 0) {
-          onFirst(response[0]);
-        }
-        setData(response);
-      } catch (e) {
-        setData(e);
-      }
-      setLoading(false);
-    },
-    () => {},
-    []
-  );
-  return { data, loading };
-};
-
 interface ChannelsListProps {
   token: string;
   activeChannel: SlackConversation | null;
@@ -73,11 +46,17 @@ export default function ChannelsList({
   activeChannel,
   onChannelSelect
 }: ChannelsListProps) {
-  const { data, loading } = useSlack(token, first => onChannelSelect(first));
+  const [channels, loading] = useSlackApi(
+    activeChannel,
+    async () => await getAllChannels(token)
+  );
+
+  console.log(channels);
+
   return (
     <Channels>
       {loading && <Loading>Loading...</Loading>}
-      {data.map(c => (
+      {channels.map((c: SlackConversation) => (
         <Channel
           active={activeChannel ? c.id == activeChannel.id : false}
           key={c.name}

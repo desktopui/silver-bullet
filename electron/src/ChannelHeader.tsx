@@ -6,12 +6,12 @@ const ChannelH1 = styled.div`
   background-color: #f5f3f3;
   text-align: center;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: #555;
 `;
 
 const Subtitle = styled.div`
-  font-size: 0.5em;
+  font-size: 0.8em;
   color: #888;
 `;
 

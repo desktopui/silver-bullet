@@ -22,6 +22,10 @@ interface ChatMessagesProps {
   activeChannel: SlackConversation;
 }
 
+const EmptySpace = styled.div`
+  margin: 0.2em 0em;
+`;
+
 function ChatMessages({ token, activeChannel }: ChatMessagesProps) {
   const listRef = useRef(null);
   useEffect(() => {
@@ -40,11 +44,11 @@ function ChatMessages({ token, activeChannel }: ChatMessagesProps) {
 
   const loading = messagesLoading || usersLoading;
 
-  console.log(users);
-
   return (
     <Frame ref={listRef}>
       {loading && <span>Loading..</span>}
+
+      <EmptySpace />
       {!loading &&
         messages.map((message: SlackMessage, index: number) => (
           <Message

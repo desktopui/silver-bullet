@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ChannelList from "./ChannelList";
 import ChannelHeader from "./ChannelHeader";
 import ChatMessages from "./ChatMessages";
+import useLocalStorage from "./useLocalStorage";
 import { SlackConversation } from "./api";
 
 const Frame = styled.div`
@@ -27,19 +28,13 @@ const Input = styled.input`
   font-size: 1.2em;
 `;
 
-const Message = styled.div``;
-
 interface ChatScreenProps {
   token: string;
 }
 
 export default function ChatScreen({ token }: ChatScreenProps) {
-  const messages = [{ text: "text 1" }];
-  const [activeChannel, setActiveChannel] = useState<SlackConversation | null>(
-    null
-  );
+  const [activeChannel, setActiveChannel] = useLocalStorage("activeChannel");
 
-  console.log(activeChannel);
   return (
     <Frame>
       <ChannelList

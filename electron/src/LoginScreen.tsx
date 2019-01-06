@@ -3,6 +3,7 @@ import * as React from "react";
 import * as Oauth2 from "simple-oauth2";
 import styled from "styled-components";
 import parse from "url-parse";
+import Link, { LinkProps } from "./Link";
 
 const Block = styled.div`
   flex: 1;
@@ -10,11 +11,7 @@ const Block = styled.div`
   height: 100vh;
   justify-content: center;
   align-items: center;
-`;
-
-const LinkButton = styled.a`
-  font-size: 1.4em;
-  color: palevioletred;
+  flex-direction: column;
 `;
 
 const credentials = {
@@ -42,12 +39,17 @@ const authorizationUri = oauth2.authorizationCode.authorizeURL({
   state: "uniquestring"
 });
 
-const electron = (window as any).require("electron");
-
 interface Props {
   onAuthCompleted(code: string): void;
   onAuthError(message: string): void;
 }
+
+const LinkButton = styled(Link)`
+  font-size: 1.5em;
+  color: palevioletred;
+`;
+
+const electron = (window as any).require("electron");
 
 export default class LoginScreen extends React.Component<Props> {
   componentDidMount() {
@@ -88,17 +90,12 @@ export default class LoginScreen extends React.Component<Props> {
   public render() {
     return (
       <Block>
-        <LinkButton
-          href={authorizationUri}
-          target="_blank"
-          onClick={e => {
-            e.preventDefault();
-            const link = (e.target as any).href;
-            electron.shell.openExternal(link);
-          }}
-        >
-          Sign in with Slack
-        </LinkButton>
+        <div>
+          <h1>Silver Bullet / Electron</h1>
+        </div>
+        <div>
+          <LinkButton href={authorizationUri}>Sign in with Slack</LinkButton>
+        </div>
       </Block>
     );
   }
