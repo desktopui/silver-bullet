@@ -83,6 +83,7 @@ export interface SlackUser {
   profile: {
     title: string;
     real_name: string;
+    display_name: string;
     image_32: string;
     image_48: string;
     image_72: string;

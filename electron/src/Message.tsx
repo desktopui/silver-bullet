@@ -111,7 +111,7 @@ export function Message({ message, prevMessage, user, users }: MessageProps) {
         <div>
           {isNewUser && (
             <NameContainer>
-              <strong>{user.name}</strong>
+              <strong>{user.profile.display_name}</strong>
               <Time>{toDate(message.ts).format("HH:mm")}</Time>
             </NameContainer>
           )}

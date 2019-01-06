@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-const electron = (window as any).require("electron");
+import { electron } from "./electron";
 
 export interface LinkProps {
   children: string | ReactElement<any>;
@@ -14,8 +14,7 @@ export default function Link({ className, children, href }: LinkProps) {
       target="_blank"
       onClick={e => {
         e.preventDefault();
-        const link = (e.target as any).href;
-        electron.shell.openExternal(link);
+        electron.shell.openExternal(href);
       }}
     >
       {children}
