@@ -6,16 +6,15 @@ Join DesktopUI slack:
 
 Instead of an ToDo list, we are going to implement a minimal chat example that contains:
 
-- Http requests
+- HTTP requests
 - Websockets
 - Animation
-- Basic layout
-- A piece of code that uses platform API that browsers don't have (yet)
+- Responsive layout
+- A piece of code that uses platform-specific API that browsers don't have (yet) and or OS integration.
 - Theme support and/or the dark theme in Mojavi
-- Any sort of OS integration (showing if you're using ide in status - thus scanning the currently running process)
 - Accessiblity
 - i18n
-- Sort of Advanced UI: inversible scroll and/or virtualized list
+- Sort of Advanced UI: inversible scroll and/or a virtualized list
 - Basic tests
 
 It's not that kind of test "let's measure some metrics, get scores and choose the best", like you read when choosing a TV. It's merely an attempt
@@ -24,9 +23,9 @@ to explore current possibilities to write GUI and learn something new.
 ## Contents
 
 - ### [Intro](#Intro)
-- ### [I. Electron](#Electron)
-- ### https://github.com/Boscop/web-view
-- ### http://tomsik.cz/node-webrender/
+- ### [Electron](/tree/master/electron)
+- ### WebView wrapper https://github.com/Boscop/web-view
+- ### Servo WebRenderer http://tomsik.cz/node-webrender/
 - ### React Native from Microsoft
 - ### React Native for Qt from Status
 - ### Flutter for desktop
@@ -34,7 +33,6 @@ to explore current possibilities to write GUI and learn something new.
 - ### Libui (bindings for Rust/Go)
 - ### Qt
 - ### Swing Java
-- ### JavaFX
 - ### The framework SublimeText is using.
 - ### _Bonus:_ Marzipan
 

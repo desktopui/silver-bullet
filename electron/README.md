@@ -13,5 +13,3 @@ yarn start # for running React in browser
 # or
 yarn electron-dev # launch Electron and listen to
 ```
-
-[sbelectron://app](sbelectron://app)
