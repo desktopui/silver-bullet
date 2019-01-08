@@ -19,18 +19,21 @@ to explore current possibilities to write GUI and learn something new.
 
 ## Desktop frameworks
 
-- ### [Electron](/tree/master/electron)
-- ### WebView wrapper https://github.com/Boscop/web-view
-- ### Servo WebRenderer http://tomsik.cz/node-webrender/
-- ### React Native from Microsoft
-- ### React Native for Qt from Status
-- ### Flutter for desktop
-- ### Libui (proton-native)
-- ### Libui (bindings for Rust/Go)
-- ### Qt
-- ### Swing Java
-- ### The framework SublimeText is using.
-- ### _Bonus:_ Marzipan
+## [Electron](/electron)
+
+TypeScript, React, Styled Components, Visual Studio Code.
+
+- ### TODO: WebView wrapper https://github.com/Boscop/web-view
+- ### TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
+- ### TODO: React Native from Microsoft
+- ### TODO: React Native for Qt from Status
+- ### TODO: Flutter for desktop
+- ### TODO: Libui (proton-native)
+- ### TODO: Libui (bindings for Rust/Go)
+- ### TODO: Qt
+- ### TODO: Swing Java
+- ### TODO: The framework SublimeText is using.
+- ### _Bonus:_ Marzipan (iOSMac)
 
 ## Motivation
 
