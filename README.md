@@ -41,8 +41,3 @@ It surely will narrow down the area for desktop apps. Apple recently [turned bac
 ### So what should I use? Please, no "it depends" answer.
 
 But it really depends. From a plain old web application with offline compabilities to fully native there are scale with different set of trade-offs.
-
-## Electron
-
-<!--
-Electron has a its own renderer and some APIs that extend browser ones, but you're still have to implement many things in a platform-dependent way. -->

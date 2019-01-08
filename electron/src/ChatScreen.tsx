@@ -5,7 +5,7 @@ import ChannelList from "./ChannelList";
 import ChannelHeader from "./ChannelHeader";
 import ChatMessages from "./ChatMessages";
 import useLocalStorage from "./useLocalStorage";
-import { SlackConversation } from "./api";
+import { SlackConversation, useRTM } from "./api";
 
 const Frame = styled.div`
   flex: 1;
@@ -34,7 +34,7 @@ interface ChatScreenProps {
 
 export default function ChatScreen({ token }: ChatScreenProps) {
   const [activeChannel, setActiveChannel] = useLocalStorage("activeChannel");
-
+  const rtm = useRTM(token);
   return (
     <Frame>
       <ChannelList

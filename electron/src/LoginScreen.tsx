@@ -13,6 +13,7 @@ const Block = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  text-align: center;
 `;
 
 const credentials = {
@@ -89,9 +90,7 @@ export default class LoginScreen extends React.Component<Props> {
   public render() {
     return (
       <Block>
-        <div>
-          <h1>Silver Bullet / Electron</h1>
-        </div>
+        <h1>Silver Bullet / Electron</h1>
         <div>
           <LinkButton href={authorizationUri}>Sign in with Slack</LinkButton>
         </div>

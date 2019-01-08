@@ -104,6 +104,14 @@ export function fetchUsers(token: string): Promise<Array<SlackUser>> {
   });
 }
 
+export function fetchMe(token: string): Promise<Array<SlackUser>> {
+  const web = new WebClient(token);
+  const param = {};
+  return web.users.profile.get(param).then(results => {
+    return [{ profile: (results as any).profile }] as Array<SlackUser>;
+  });
+}
+
 // TODO: rewrite with Suspense
 export function useSlackApi<T>(
   prop: any,

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { useSlackApi, SlackConversation, getAllChannels, useRTM } from "./api";
+import { useSlackApi, SlackConversation, getAllChannels, fetchMe } from "./api";
+import BottomBar from "./BottomBar";
 
 const Channels = styled.div`
   width: 30%;
@@ -49,7 +50,12 @@ export default function ChannelsList({
     async () => await getAllChannels(token)
   );
 
-  console.log(channels);
+  const [me, meLoading] = useSlackApi(
+    activeChannel,
+    async () => await fetchMe(token)
+  );
+
+  console.log(me);
   return (
     <Channels>
       {loading && <Loading>Loading...</Loading>}
@@ -64,6 +70,7 @@ export default function ChannelsList({
           {c.name}
         </Channel>
       ))}
+      {me && me[0] && <BottomBar user={me[0]!} />}
     </Channels>
   );
 }
