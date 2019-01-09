@@ -55,7 +55,6 @@ export default function ChannelsList({
     async () => await fetchMe(token)
   );
 
-  console.log(me);
   return (
     <Channels>
       {loading && <Loading>Loading...</Loading>}

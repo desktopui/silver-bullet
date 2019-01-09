@@ -1,4 +1,4 @@
-import { WebClient, RTMClient } from "@slack/client";
+import { WebClient, RTMClient, LogLevel } from "@slack/client";
 import { useAsyncEffect } from "use-async-effect";
 import { useState, useEffect } from "react";
 
@@ -139,7 +139,18 @@ export function useSlackApi<T>(
 
 export function useRTM(token: string) {
   useEffect(() => {
-    const rtm = new RTMClient(token);
-    rtm.start().then(res => console.log(res));
+    const params = {
+      logLevel: LogLevel.DEBUG,
+      autoReconnect: true,
+      useRtmConnect: false
+    };
+    const rtm = new RTMClient(token, params);
+    rtm.start().then(res => console.log("rtm started", res));
+    rtm.on("message", message => {
+      // Log the message
+      console.log(
+        `(channel:${message.channel}) ${message.user} says: ${message.text}`
+      );
+    });
   }, []);
 }
