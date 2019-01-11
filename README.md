@@ -40,6 +40,8 @@ to explore current possibilities to write GUI and learn something new.
 - ### TODO: Qt
 - ### TODO: Swing Java
 - ### TODO: The framework SublimeText is using.
+- ### TODO: sciter
+- ### _Bonus:_ PWA (ServiceWorkers)
 - ### _Bonus:_ Marzipan (iOSMac)
 
 ## Motivation
