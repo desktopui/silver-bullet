@@ -3,10 +3,29 @@
 _the article is work-in-progress_
 
 - [A showcase app](#a-showcase-app)
-- [Desktop frameworks](#desktop-frameworks)
+- [New Wave](#new-wave)
+  - [Electron](#electron)
+  - [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
+  - [TODO: Servo WebRenderer http://tomsik.cz/node-webrender/](#todo-servo-webrenderer-httptomsikcznode-webrender)
+  - [TODO: React Native from Microsoft](#todo-react-native-from-microsoft)
+  - [TODO: React Native for Qt from Status](#todo-react-native-for-qt-from-status)
+  - [TODO: Flutter for desktop](#todo-flutter-for-desktop)
+  - [TODO: Libui (proton-native)](#todo-libui-proton-native)
+  - [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
+  - [TODO: sciter](#todo-sciter)
+  - [TODO: https://github.com/vurtun/nuklear](#todo-httpsgithubcomvurtunnuklear)
+- [Mature](#mature)
+  - [TODO: WDL](#todo-wdl)
+  - [TODO: Qt](#todo-qt)
+  - [TODO: Swing Java](#todo-swing-java)
+  - [TODO: The framework SublimeText is using.](#todo-the-framework-sublimetext-is-using)
+  - [TODO: JUCE](#todo-juce)
+  - [TODO: wxwidgets](#todo-wxwidgets)
+  - [TODO: JavaFX (TornadoFX)](#todo-javafx-tornadofx)
+- [Advanced](#advanced)
+  - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
+- [Bonus](#bonus)
 - [Motivation](#motivation)
-    - [Isn't desktop dying? Given that PWA is coming, and WebAssembly is a thing.](#isnt-desktop-dying-given-that-pwa-is-coming-and-webassembly-is-a-thing)
-    - [So what should I use? Please, no "it depends" answer.](#so-what-should-i-use-please-no-%22it-depends%22-answer)
 
 ## A showcase app
 
@@ -27,29 +46,51 @@ Instead of a ToDo list, we are going to implement a minimal chat example in hope
 It's not that kind of test "let's measure some metrics, get scores and choose the best", like you read when choosing a TV. It's merely an attempt
 to explore current possibilities to write GUI and learn something new.
 
-## Desktop frameworks
+## New Wave
 
-- ### Electron. TypeScript, React, Styled Components, Visual Studio Code.
-- ### TODO: WebView wrapper https://github.com/Boscop/web-view
-- ### TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
-- ### TODO: React Native from Microsoft
-- ### TODO: React Native for Qt from Status
-- ### TODO: Flutter for desktop
-- ### TODO: Libui (proton-native)
-- ### TODO: Libui (bindings for Rust/Go)
-- ### TODO: Qt
-- ### TODO: Swing Java
-- ### TODO: The framework SublimeText is using.
-- ### TODO: sciter
+### Electron
+
+### TODO: WebView wrapper https://github.com/Boscop/web-view
+
+### TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
+
+### TODO: React Native from Microsoft
+
+### TODO: React Native for Qt from Status
+
+### TODO: Flutter for desktop
+
+### TODO: Libui (proton-native)
+
+### TODO: Libui (bindings for Rust/Go)
+
+### TODO: sciter
+
+### TODO: https://github.com/vurtun/nuklear
+
+## Mature
+
+### TODO: WDL
+
+### TODO: Qt
+
+### TODO: Swing Java
+
+### TODO: The framework SublimeText is using.
+
+### TODO: JUCE
+
+### TODO: wxwidgets
+
+### TODO: JavaFX (TornadoFX)
+
+## Advanced
+
+### Writing your own custom renderer (Webgl/OpenGL/DirectX)
+
+## Bonus
+
 - ### _Bonus:_ PWA (ServiceWorkers)
 - ### _Bonus:_ Marzipan (iOSMac)
 
 ## Motivation
-
-#### Isn't desktop dying? Given that PWA is coming, and WebAssembly is a thing.
-
-It surely will narrow down the area for desktop apps. Apple recently [turned back]() on desktop machines recognizing its importance for the community. It's still a primary tool for pro users. Most people still prefers editing code, photos and video in specialized desktop tool.
-
-#### So what should I use? Please, no "it depends" answer.
-
-But it really depends. From a plain old web application with offline compabilities to fully native there are scale with different set of trade-offs.
