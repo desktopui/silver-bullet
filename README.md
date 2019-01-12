@@ -2,8 +2,11 @@
 
 _the article is work-in-progress_
 
-- [A showcase app](#a-showcase-app)
-- [New Wave](#new-wave)
+- [Searching for Silver Bullet](#searching-for-silver-bullet)
+  - [Isn't desktop software dying?](#isnt-desktop-software-dying)
+  - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
+- [Let's made a chat app in different frameworks](#lets-made-a-chat-app-in-different-frameworks)
+- ["New Wave"](#%22new-wave%22)
   - [Electron](#electron)
   - [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
   - [TODO: Servo WebRenderer http://tomsik.cz/node-webrender/](#todo-servo-webrenderer-httptomsikcznode-webrender)
@@ -25,9 +28,16 @@ _the article is work-in-progress_
 - [Advanced](#advanced)
   - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
 - [Bonus](#bonus)
-- [Motivation](#motivation)
+  - [PWA (ServiceWorkers)](#pwa-serviceworkers)
+  - [Marzipan (iOSMac)](#marzipan-iosmac)
 
-## A showcase app
+## Searching for Silver Bullet
+
+### Isn't desktop software dying?
+
+### 10 Popular Desktop Applications and the trade-offs
+
+## Let's made a chat app in different frameworks
 
 <img src="https://user-images.githubusercontent.com/1004115/50629735-e37d0d80-0f4e-11e9-9c2e-3081e943879e.png" alt="a prototype for a chat app screenshot" width="400"  />
 
@@ -46,7 +56,7 @@ Instead of a ToDo list, we are going to implement a minimal chat example in hope
 It's not that kind of test "let's measure some metrics, get scores and choose the best", like you read when choosing a TV. It's merely an attempt
 to explore current possibilities to write GUI and learn something new.
 
-## New Wave
+## "New Wave"
 
 ### Electron
 
@@ -90,7 +100,6 @@ to explore current possibilities to write GUI and learn something new.
 
 ## Bonus
 
-- ### _Bonus:_ PWA (ServiceWorkers)
-- ### _Bonus:_ Marzipan (iOSMac)
+### PWA (ServiceWorkers)
 
-## Motivation
+### Marzipan (iOSMac)
