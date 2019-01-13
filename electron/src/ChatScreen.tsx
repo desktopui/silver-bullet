@@ -6,6 +6,7 @@ import ChannelHeader from "./ChannelHeader";
 import ChatMessages from "./ChatMessages";
 import useLocalStorage from "./useLocalStorage";
 import { SlackConversation, useRTM } from "./api";
+import useWindowSize from "./useWindowSize";
 
 const Frame = styled.div`
   flex: 1;
@@ -23,7 +24,7 @@ const MessagesBlock = styled.div`
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: -webkit-fill-available;
   padding: 1em;
   font-size: 1.2em;
 `;
@@ -34,7 +35,11 @@ interface ChatScreenProps {
 
 export default function ChatScreen({ token }: ChatScreenProps) {
   const [activeChannel, setActiveChannel] = useLocalStorage("activeChannel");
-  const rtm = useRTM(token);
+  // const rtm = useRTM(token);
+  // const windowSize = useWindowSize();
+  // if (windowSize.innerWidth < 400) {
+  //   console.log("TRIGGER COLAPSE");
+  // }
   return (
     <Frame>
       <ChannelList
