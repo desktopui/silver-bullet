@@ -16,13 +16,13 @@ _the article is work-in-progress_
   - [TODO: Libui (proton-native)](#todo-libui-proton-native)
   - [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
   - [TODO: sciter](#todo-sciter)
-  - [TODO: https://github.com/vurtun/nuklear](#todo-httpsgithubcomvurtunnuklear)
-  - [TODO: Quip](#todo-quip)
+  - [TODO: nulklear](#todo-nulklear)
+  - [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
 - [Mature](#mature)
   - [TODO: WDL](#todo-wdl)
   - [TODO: Qt](#todo-qt)
   - [TODO: Swing Java](#todo-swing-java)
-  - [TODO: The framework SublimeText is using.](#todo-the-framework-sublimetext-is-using)
+  - [TODO: The framework SublimeText is using if available](#todo-the-framework-sublimetext-is-using-if-available)
   - [TODO: JUCE](#todo-juce)
   - [TODO: wxwidgets](#todo-wxwidgets)
   - [TODO: JavaFX (TornadoFX)](#todo-javafx-tornadofx)
@@ -115,7 +115,13 @@ If we dump our chat client to Skia internal representation format and use a debu
 
 <img width="350" alt="Skia debugger step-by-step painting process of a chat" src="https://user-images.githubusercontent.com/1004115/51084323-92cc9800-1738-11e9-94fe-d40e56f16830.gif">
 
-So the button is not native. What does it mean? In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized. For a certain group of desktop apps, though, you may want to "mimic" it to a native app look&feel, and it'll be harder to maintain with Electron. Just look at a library that provides a set of macOS UI controls https://screenisland.com/maverix/#/controls — it become outdated the next second Apple released the next macOS version.
+So the button doesn't match native look and feel. What does it mean? In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably should not look anything like native button:
+
+<img width="90" alt="Styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
+
+For a certain group of desktop apps, though, you may want to "mimic" it with system controls, which is possible by carefully crafting the right CSS, but it'll be harder to maintain with Electron. As an example, look at the library that provides a set of macOS UI controls https://screenisland.com/maverix/#/controls, it became outdated the next second Apple released the next macOS version.
+
+Good news, we don't need anything like that for our chat app.
 
 **Sign in**
 
@@ -145,9 +151,9 @@ So the button is not native. What does it mean? In terms of styling, usually for
 
 ### TODO: sciter
 
-### TODO: https://github.com/vurtun/nuklear
+### TODO: nulklear
 
-### TODO: Quip
+### TODO: The framework Quip is using if available
 
 ## Mature
 
@@ -157,7 +163,7 @@ So the button is not native. What does it mean? In terms of styling, usually for
 
 ### TODO: Swing Java
 
-### TODO: The framework SublimeText is using.
+### TODO: The framework SublimeText is using if available
 
 ### TODO: JUCE
 
@@ -174,7 +180,3 @@ So the button is not native. What does it mean? In terms of styling, usually for
 ### PWA (ServiceWorkers)
 
 ### Marzipan (iOSMac)
-
-```
-
-```
