@@ -17,48 +17,54 @@ const Channels = styled.div`
   transition: ease-in-out all 0.3s;
 `;
 
-const Channel = styled.a<{ active: boolean }>`
-  display: flex;
+interface ChannelProps {
+  active: boolean;
+}
+const Channel = styled.a<ChannelProps>`
   flex-direction: row;
   padding: 0.25em 0;
   padding-left: 1.2em;
   color: ${props => (props.active ? "white" : "#eee")};
-  display: block;
+  display: flex;
   font-size: 1.2em;
   text-decoration: none;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: ${props => (props.active ? "darkkhaki" : "transparent")};
   &:hover {
     background-color: ${props => (props.active ? "darkkhaki" : "gray")};
   }
   @media (max-width: 500px) {
     transition: ease-in-out all 0.3s;
-    padding-left: 0.5em;
+    padding-left: 0.4em;
   }
   transition: ease-in-out all 0.3s;
 `;
 
-const Title = styled.span`
-  display: inline;
+const Title = styled.div`
+  transform: scaleX(1);
+  transform-origin: top left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
   @media (max-width: 500px) {
-    max-height: 0px;
-    max-width: 0px;
-    opacity: 0;
-    transition: ease-in all 0.3s;
-    display: inline-block;
+    transition: ease-in all 0.25s;
+    transform: scaleX(0);
+    max-width: 0;
   }
   transition: ease-in all 0.3s;
 `;
 
-const Number = styled.span`
-  font-size: 0.8em;
+const Short = styled.div`
+  font-size: 0.9em;
   font-weight: bold;
   opacity: 0;
   @media (max-width: 500px) {
     opacity: 1;
     transition: ease-in all 0.3s;
+    color: white;
   }
-  transition: ease-in all 0.3s;
+  transition: ease-in all 0.1s;
 `;
 
 const Loading = styled.div`
@@ -68,9 +74,10 @@ const Loading = styled.div`
   color: #ccc;
 `;
 
-const Hashtag = styled.span`
+const Hashtag = styled.div`
   color: #ccc;
-  padding-right: 5px;
+  padding-right: 2px;
+  display: inline-block;
   @media (max-width: 500px) {
     color: white;
     transition: color 0.3s ease-in-out;
@@ -112,7 +119,7 @@ export default function ChannelsList({
         >
           <Hashtag>#</Hashtag>
           <Title>{c.name}</Title>
-          <Number>{i}</Number>
+          <Short>{c.name.slice(0, 2)}</Short>
         </Channel>
       ))}
       {me && me[0] && <BottomBar user={me[0]!} />}
