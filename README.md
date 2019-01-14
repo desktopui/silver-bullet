@@ -3,10 +3,11 @@
 _the article is work-in-progress_
 
 - [Searching for Silver Bullet](#searching-for-silver-bullet)
-  - [Isn't desktop software dying?](#isnt-desktop-software-dying)
-  - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
-- [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
-- ["New Wave"](#%22new-wave%22)
+  - [Intro](#intro)
+    - [Isn't desktop software dying?](#isnt-desktop-software-dying)
+    - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
+    - ["New Wave" vs "Old school"](#%22new-wave%22-vs-%22old-school%22)
+  - [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
   - [Electron](#electron)
   - [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
   - [TODO: Servo WebRenderer http://tomsik.cz/node-webrender/](#todo-servo-webrenderer-httptomsikcznode-webrender)
@@ -18,7 +19,6 @@ _the article is work-in-progress_
   - [TODO: sciter](#todo-sciter)
   - [TODO: nulklear](#todo-nulklear)
   - [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
-- [Mature](#mature)
   - [TODO: WDL](#todo-wdl)
   - [TODO: Qt](#todo-qt)
   - [TODO: Swing Java](#todo-swing-java)
@@ -26,17 +26,20 @@ _the article is work-in-progress_
   - [TODO: JUCE](#todo-juce)
   - [TODO: wxwidgets](#todo-wxwidgets)
   - [TODO: JavaFX (TornadoFX)](#todo-javafx-tornadofx)
-- [Advanced](#advanced)
-  - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
-- [Bonus](#bonus)
-  - [PWA (ServiceWorkers)](#pwa-serviceworkers)
-  - [Marzipan (iOSMac)](#marzipan-iosmac)
+  - [Advanced](#advanced)
+    - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
+  - [Bonus: PWA (ServiceWorkers)](#bonus-pwa-serviceworkers)
+  - [Bonus: Marzipan (iOSMac)](#bonus-marzipan-iosmac)
 
-## Searching for Silver Bullet
+# Searching for Silver Bullet
+
+## Intro
 
 ### Isn't desktop software dying?
 
 ### 10 Popular Desktop Applications and the trade-offs
+
+### "New Wave" vs "Old school"
 
 ## Showcase: a chat app in different frameworks
 
@@ -63,9 +66,7 @@ We have a scrollable channel list, and scrollable message list, with the header 
 
 We are going to try Slack APIs as well and see how far we can go with it.
 
-## "New Wave"
-
-### Electron
+## Electron
 
 [https://electronjs.org](https://electronjs.org)
 
@@ -135,48 +136,44 @@ Good news, we don't need anything like that for our chat app.
 
 <img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
 
-### TODO: WebView wrapper https://github.com/Boscop/web-view
+## TODO: WebView wrapper https://github.com/Boscop/web-view
 
-### TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
+## TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
 
-### TODO: React Native from Microsoft
+## TODO: React Native from Microsoft
 
-### TODO: React Native for Qt from Status
+## TODO: React Native for Qt from Status
 
-### TODO: Flutter for desktop
+## TODO: Flutter for desktop
 
-### TODO: Libui (proton-native)
+## TODO: Libui (proton-native)
 
-### TODO: Libui (bindings for Rust/Go)
+## TODO: Libui (bindings for Rust/Go)
 
-### TODO: sciter
+## TODO: sciter
 
-### TODO: nulklear
+## TODO: nulklear
 
-### TODO: The framework Quip is using if available
+## TODO: The framework Quip is using if available
 
-## Mature
+## TODO: WDL
 
-### TODO: WDL
+## TODO: Qt
 
-### TODO: Qt
+## TODO: Swing Java
 
-### TODO: Swing Java
+## TODO: The framework SublimeText is using if available
 
-### TODO: The framework SublimeText is using if available
+## TODO: JUCE
 
-### TODO: JUCE
+## TODO: wxwidgets
 
-### TODO: wxwidgets
-
-### TODO: JavaFX (TornadoFX)
+## TODO: JavaFX (TornadoFX)
 
 ## Advanced
 
 ### Writing your own custom renderer (Webgl/OpenGL/DirectX)
 
-## Bonus
+## Bonus: PWA (ServiceWorkers)
 
-### PWA (ServiceWorkers)
-
-### Marzipan (iOSMac)
+## Bonus: Marzipan (iOSMac)
