@@ -2,42 +2,77 @@
 
 _the article is work-in-progress_
 
-- [Searching for Silver Bullet](#searching-for-silver-bullet)
-  - [Intro](#intro)
-    - [Isn't desktop software dying?](#isnt-desktop-software-dying)
-    - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
-    - ["New Wave" vs "Old school"](#%22new-wave%22-vs-%22old-school%22)
-  - [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
-  - [Electron](#electron)
-  - [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
-  - [TODO: Servo WebRenderer http://tomsik.cz/node-webrender/](#todo-servo-webrenderer-httptomsikcznode-webrender)
-  - [TODO: React Native from Microsoft](#todo-react-native-from-microsoft)
-  - [TODO: React Native for Qt from Status](#todo-react-native-for-qt-from-status)
-  - [TODO: Flutter for desktop](#todo-flutter-for-desktop)
-  - [TODO: Libui (proton-native)](#todo-libui-proton-native)
-  - [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
-  - [TODO: sciter](#todo-sciter)
-  - [TODO: nulklear](#todo-nulklear)
-  - [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
-  - [TODO: WDL](#todo-wdl)
-  - [TODO: Qt](#todo-qt)
-  - [TODO: Swing Java](#todo-swing-java)
-  - [TODO: The framework SublimeText is using if available](#todo-the-framework-sublimetext-is-using-if-available)
-  - [TODO: JUCE](#todo-juce)
-  - [TODO: wxwidgets](#todo-wxwidgets)
-  - [TODO: JavaFX (TornadoFX)](#todo-javafx-tornadofx)
-  - [Advanced](#advanced)
-    - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
-  - [Bonus: PWA (ServiceWorkers)](#bonus-pwa-serviceworkers)
-  - [Bonus: Marzipan (iOSMac)](#bonus-marzipan-iosmac)
-
-# Searching for Silver Bullet
+- [Intro](#intro)
+  - [Isn't desktop software dying?](#isnt-desktop-software-dying)
+  - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
+  - ["New Wave" vs "Old school"](#%22new-wave%22-vs-%22old-school%22)
+- [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
+- [Electron](#electron)
+- [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
+- [TODO: Servo WebRenderer http://tomsik.cz/node-webrender/](#todo-servo-webrenderer-httptomsikcznode-webrender)
+- [TODO: React Native from Microsoft](#todo-react-native-from-microsoft)
+- [TODO: React Native for Qt from Status](#todo-react-native-for-qt-from-status)
+- [TODO: Flutter for desktop](#todo-flutter-for-desktop)
+- [TODO: Libui (proton-native)](#todo-libui-proton-native)
+- [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
+- [TODO: sciter](#todo-sciter)
+- [TODO: nulklear](#todo-nulklear)
+- [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
+- [TODO: WDL](#todo-wdl)
+- [TODO: Qt](#todo-qt)
+- [TODO: Swing Java](#todo-swing-java)
+- [TODO: The framework SublimeText is using if available](#todo-the-framework-sublimetext-is-using-if-available)
+- [TODO: JUCE](#todo-juce)
+- [TODO: wxwidgets](#todo-wxwidgets)
+- [TODO: JavaFX (TornadoFX)](#todo-javafx-tornadofx)
+- [Advanced](#advanced)
+  - [Writing your own custom renderer (Webgl/OpenGL/DirectX)](#writing-your-own-custom-renderer-webglopengldirectx)
+- [Bonus: PWA (ServiceWorkers)](#bonus-pwa-serviceworkers)
+- [Bonus: Marzipan (iOSMac)](#bonus-marzipan-iosmac)
 
 ## Intro
 
 ### Isn't desktop software dying?
 
 ### 10 Popular Desktop Applications and the trade-offs
+
+**Microsoft Office**
+
+Classic fully client-side with a huge legacy and with ongoing process of rewriting. No Linux version.
+
+**Adobe Photoshop**
+
+Classic fully client-side with a huge legacy and with ongoing process of rewriting. No Linux version.
+
+**Skype**
+
+Fast iteration on development more than anything.
+
+**Sublime Text**
+
+Small team. All platforms. Complex logic behind UI, but few controls. Fast&responsive.
+
+**VLC Player**
+
+Relatively simple UI with complex processing behind it.
+
+**Spotify**
+
+Single-window static UI.
+
+**Dropbox**
+
+Little UI, deep integration into the system
+
+**Arduino IDE**
+
+Written in Java Swing.
+
+**Telegram Desktop**
+
+Web could be banned, because URL != server API endpoint, URL is more like a name, shortcut to launch an app.
+
+**Small indie app**
 
 ### "New Wave" vs "Old school"
 
@@ -80,7 +115,7 @@ We are going to try Slack APIs as well and see how far we can go with it.
 
 **Renderer** Software renderer for DOM (Skia) + WebGL
 
-Since Electron is based on a web browser, Chromium in this case, the developer experience for anybody who is already familiar with the web is just amazing. For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of live and hot reloadings, DevTools that allows you to change styles on the fly and profile, and infinite amount of integrations with tools UI designers are using.
+Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing. For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of live and hot reloadings, DevTools that allows you to change styles on the fly and profile, and infinite amount of integrations with tools UI designers are using.
 
 In order to place an input on the screen you need HTML:
 
@@ -102,7 +137,7 @@ and optionally add JavaScript to handle changes:
 document.querySelector("input").onchange = e => console.log(e);
 ```
 
-That's the result on macOS:
+This is the result you get on macOS:
 
 <img width="70" alt="screenshot 2019-01-13 14 00 03" src="https://user-images.githubusercontent.com/1004115/51084515-2e133c80-173c-11e9-869e-7f030a4e1a7a.png">
 
@@ -112,7 +147,7 @@ How does it translate to different platforms? The browser is an incredibly compl
 
 ![a pressed button in Safari](https://user-images.githubusercontent.com/1004115/51084915-070c3900-1743-11e9-9040-87c1fa4395db.gif)
 
-If we dump our chat client to Skia internal representation format and use a debugger, we can see a step-by-step process where button is just an image of button backgraound + set of glyphs over it + some transformation logic:
+If we dump our chat client to Skia internal representation format and use a debugger, we can see a step-by-step process where the button is just an image of button backgraound + set of glyphs over it + some transformation logic:
 
 <img width="350" alt="Skia debugger step-by-step painting process of a chat" src="https://user-images.githubusercontent.com/1004115/51084323-92cc9800-1738-11e9-94fe-d40e56f16830.gif">
 
@@ -120,9 +155,9 @@ So the button doesn't match native look and feel. What does it mean? In terms of
 
 <img width="90" alt="Styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
 
-For a certain group of desktop apps, though, you may want to "mimic" it with system controls, which is possible by carefully crafting the right CSS, but it'll be harder to maintain with Electron. As an example, look at the library that provides a set of macOS UI controls https://screenisland.com/maverix/#/controls, it became outdated the next second Apple released the next macOS version.
+For a certain group of desktop apps, though, you may want to "mimic" its look to make it closer to system controls. That is possible by carefully crafting the right CSS, but it'll be harder to maintain over the time. As an example, look at the library that provided a set of macOS UI controls https://screenisland.com/maverix/#/controls, it became outdated the next second Apple released the next macOS version.
 
-Good news, we don't need anything like that for our chat app.
+Good news, we don't need anything like that for our chat app, and probably for any UI-heavy app.
 
 **Sign in**
 
