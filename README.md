@@ -38,11 +38,11 @@ _the article is work-in-progress_
 
 **Microsoft Office**
 
-Classic fully client-side with a huge legacy and with ongoing process of rewriting. No Linux version.
+Classic, client-side value, with a huge legacy and with ongoing process of rewriting. No Linux version.
 
 **Adobe Photoshop**
 
-Classic fully client-side with a huge legacy and with ongoing process of rewriting. No Linux version.
+Classic, client-side value, with a huge legacy and with ongoing process of rewriting. No Linux version.
 
 **Skype**
 
@@ -54,7 +54,7 @@ Small team. All platforms. Complex logic behind UI, but few controls. Fast&respo
 
 **VLC Player**
 
-Relatively simple UI with complex processing behind it.
+Relatively simple UI with complex low-level processing behind it.
 
 **Spotify**
 
@@ -62,7 +62,7 @@ Single-window static UI.
 
 **Dropbox**
 
-Little UI, deep integration into the system
+Little UI, deep integration into the system. Network/Server > Client
 
 **Arduino IDE**
 
@@ -115,9 +115,11 @@ We are going to try Slack APIs as well and see how far we can go with it.
 
 **Renderer** Software renderer for DOM (Skia) + WebGL
 
-Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing. For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of live and hot reloadings, DevTools that allows you to change styles on the fly and profile, and infinite amount of integrations with tools UI designers are using.
+Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing. For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile, and infinite amount of integrations with tools UI designers are using.
 
-In order to place an input on the screen you need HTML:
+The browser is an incredibly complicated piece of software, comparable with the Operating System itself. There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it.
+
+Let's check a simple button. In order to place an input on the screen you need HTML:
 
 ```html
 <button type="button">Save</button>
@@ -141,33 +143,66 @@ This is the result you get on macOS:
 
 <img width="70" alt="screenshot 2019-01-13 14 00 03" src="https://user-images.githubusercontent.com/1004115/51084515-2e133c80-173c-11e9-869e-7f030a4e1a7a.png">
 
-How does it translate to different platforms? The browser is an incredibly complicated piece of software, comparable with the Operating System itself. There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it. At first glance it looks like a native button on macOS, but when we press it, we see the difference:
+How does it translate to different platforms? At first glance it looks like a native button on macOS, but when we press it, we can spot a little difference:
 
 ![a pressed button in Chrome](https://user-images.githubusercontent.com/1004115/51084508-0e7c1400-173c-11e9-8e01-afae48d71047.gif)
 
 ![a pressed button in Safari](https://user-images.githubusercontent.com/1004115/51084915-070c3900-1743-11e9-9040-87c1fa4395db.gif)
 
-If we dump our chat client to Skia internal representation format and use a debugger, we can see a step-by-step process where the button is just an image of button backgraound + set of glyphs over it + some transformation logic:
+Why is it happening? If we dump our rendered chat client from HTML+CSS to Skia's internal representation format and use a debugger, we can watch a step-by-step demonstration of how the whole document was painted by using lower-level graphical instructions:
 
 <img width="350" alt="Skia debugger step-by-step painting process of a chat" src="https://user-images.githubusercontent.com/1004115/51084323-92cc9800-1738-11e9-94fe-d40e56f16830.gif">
 
-So the button doesn't match native look and feel. What does it mean? In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably should not look anything like native button:
+And the button here is just an image of button's background + set of glyphs drawn over it + some transformation logic.
 
-<img width="90" alt="Styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
+So the button in Chrome doesn't match native look and feel for every operating system out there. But who cares? In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably won't look anything like a default native button anyway:
+
+<img width="90" alt="A styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
 
 For a certain group of desktop apps, though, you may want to "mimic" its look to make it closer to system controls. That is possible by carefully crafting the right CSS, but it'll be harder to maintain over the time. As an example, look at the library that provided a set of macOS UI controls https://screenisland.com/maverix/#/controls, it became outdated the next second Apple released the next macOS version.
 
 Good news, we don't need anything like that for our chat app, and probably for any UI-heavy app.
 
-**Sign in**
+**Network**
+
+What about writing a network code, HTTP and WebSocket in particular? We can guess just by looking at the names of these protocols, we have Hypertext and Web here, both invented for the web browser. Surprisingly, though, HTTP was much more suited initially for interlinked documents, not apps, so all we have is XmlHttpRequest and Fetch and abstractions over them. But it's no longer true, and you have things like WebRTC now and can build Skype on top of it.
+
+And again we're writing web application, so to start using Slack's API we'll go to npm:
+
+`yarn add @slack/client`
+
+and use it like this for HTTP API:
+
+```ts
+const web = new WebClient(token);
+return web.users.list({}).then(results => {
+  return results.members as Array<SlackUser>;
+});
+```
+
+and also we can use WebSocket-based, real-time client, without even thinking about details:
+
+```ts
+const rtm = new RTMClient(token, params);
+rtm.on("message", message => {
+  // Log the message
+  console.log(
+    `(channel:${message.channel}) ${message.user} says: ${message.text}`
+  );
+});
+```
+
+_Here comes a small rant about how hard to write a desktop client for Slack, even though it's understandable and I should have probably picked something open sourced. But thanks to the support, turns out it's possible to use undocumented way to use their API. And again, I love web, so easy to debug on live._
 
 <img width="1202" alt="Paused debugger for Slack developer section in order to change a scope parameter" src="https://user-images.githubusercontent.com/1004115/51083733-c951e500-172f-11e9-93ea-c918f874e25e.png">
 
-**OAuth leveraging existing Slack session**
+**OS Integration**
+
+OAuth leveraging existing Slack session in browser.
 
 <img width="1347" alt="oAuth in a Slack app that does not re-use the browser" src="https://user-images.githubusercontent.com/1004115/51083737-cfe05c80-172f-11e9-854a-96079c04d274.png">
 
-**A joy of prototyping with React and Styled components**
+**Developer experience**
 
 <img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
 
