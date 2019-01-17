@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { useSlackApi, SlackConversation, getAllChannels, fetchMe } from "./api";
-import BottomBar from "./BottomBar";
+import Me from "./Me";
 
 const Channels = styled.div`
   width: 30%;
   min-width: 200px;
   background: #695151;
-  padding: 2em 0em;
+  padding: 3em 0em;
   @media (max-width: 500px) {
     background: palevioletred;
     width: 50px;
@@ -109,6 +109,7 @@ export default function ChannelsList({
   return (
     <Channels>
       {loading && <Loading>Loading...</Loading>}
+      {me && me[0] && <Me user={me[0]!} />}
       {channels.map((c: SlackConversation, i: number) => (
         <Channel
           active={activeChannel ? c.id == activeChannel.id : false}
@@ -122,7 +123,6 @@ export default function ChannelsList({
           <Short>{c.name.slice(0, 2)}</Short>
         </Channel>
       ))}
-      {me && me[0] && <BottomBar user={me[0]!} />}
     </Channels>
   );
 }
