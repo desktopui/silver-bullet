@@ -206,6 +206,14 @@ OAuth leveraging existing Slack session in browser.
 
 <img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
 
+**Accessiblity**
+
+1. Voice Over
+
+2. Larger/contrast fonts
+
+3.
+
 ## TODO: WebView wrapper https://github.com/Boscop/web-view
 
 ## TODO: Servo WebRenderer http://tomsik.cz/node-webrender/
