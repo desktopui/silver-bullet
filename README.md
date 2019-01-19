@@ -105,6 +105,8 @@ We are going to try Slack APIs as well and see how far we can go with it.
 
 [https://electronjs.org](https://electronjs.org)
 
+Setup used for building a showcase app:
+
 **Build system**: Webpack
 
 **Languages**: TypeScript
@@ -192,15 +194,17 @@ rtm.on("message", message => {
 });
 ```
 
-_Here comes a small rant about how hard to write a desktop client for Slack, even though it's understandable and I should have probably picked something open sourced. But thanks to the support, turns out it's possible to use undocumented way to use their API. And again, I love web, so easy to debug on live._
+_Here comes a small rant about how hard to write a desktop client for Slack, even though it's understandable from the business' standpoint and I should have probably picked something open sourced. But thanks to the support, turns out it's possible to use undocumented way to use their API. And again, I love web, so easy to debug on live._
 
 <img width="1202" alt="Paused debugger for Slack developer section in order to change a scope parameter" src="https://user-images.githubusercontent.com/1004115/51083733-c951e500-172f-11e9-93ea-c918f874e25e.png">
 
 **OS Integration**
 
-OAuth leveraging existing Slack session in browser.
+To be able to write an app
 
 <img width="1347" alt="oAuth in a Slack app that does not re-use the browser" src="https://user-images.githubusercontent.com/1004115/51083737-cfe05c80-172f-11e9-854a-96079c04d274.png">
+
+OAuth leveraging existing Slack session in browser.
 
 **Developer experience**
 
@@ -208,11 +212,61 @@ OAuth leveraging existing Slack session in browser.
 
 **Accessiblity**
 
+<img width="400" alt="macOS accessibility shortcuts" src="https://user-images.githubusercontent.com/1004115/51406915-8c408500-1b6b-11e9-9243-f6c2eab9bc1a.png">
+
+![macOS accessiblity quick links]()
+
 1. Voice Over
 
-2. Larger/contrast fonts
+At first, after writing a prototype, I was getting "link, #webrender, we":
+<img width="600" alt="Voice over demonstration for menu, it says link, #webrender, we" src="https://user-images.githubusercontent.com/1004115/51429958-67104d00-1c25-11e9-9f08-410aa942c012.png">
 
-3.
+Why is that?
+
+Because produced HTML looked like this:
+
+```html
+<div>
+  <!-- ... -->
+  <a href="">
+    <span>#</span>
+
+    <span>webrender</span>
+
+    <span>we</span>
+  </a>
+  <!-- ... -->
+</div>
+```
+
+After reading [https://inclusive-components.design/menus-menu-buttons/](https://inclusive-components.design/menus-menu-buttons/), I added some semantics and aria attributes:
+
+```html
+<nav>
+  <ul aria-labelledby="sections-heading">
+    <h3 id="sections-heading">Channel List</h3>
+    <!-- ... -->
+    <li>
+      <a href="" aria-current="page">
+        <span aria-hidden="true">#</span>
+
+        <span aria-label="channel webrender">webrender</span>
+
+        <span aria-hidden="true">we</span>
+      </a>
+    </li>
+    <!-- ... -->
+  </ul>
+</nav>
+```
+
+It's all done in Styled components and React fully supports `aria-` attributes.
+
+So we hide `#` and `we` (needed for the compact mode), and now it looks like menu, and user knows what to expect:
+
+<img width="602" alt="The demonstration of Voice over after a small refactoring" src="https://user-images.githubusercontent.com/1004115/51430179-4f869380-1c28-11e9-9276-6b9e889f4ec7.png">
+
+This is not complete.
 
 ## TODO: WebView wrapper https://github.com/Boscop/web-view
 
