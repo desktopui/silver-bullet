@@ -7,7 +7,8 @@ const Channels = styled.div`
   width: 30%;
   min-width: 200px;
   background: #695151;
-  padding: 3em 0em;
+  padding: 1em 0em;
+  margin: 0;
   @media (max-width: 500px) {
     background: palevioletred;
     width: 50px;
@@ -85,6 +86,11 @@ const Hashtag = styled.div`
   transition: color 0.3s ease-in-out;
 `;
 
+const Li = styled.li`
+  list-style: none;
+  padding: 0;
+`;
+
 interface ChannelsListProps {
   token: string;
   activeChannel: SlackConversation | null;
@@ -110,19 +116,28 @@ export default function ChannelsList({
     <Channels>
       {loading && <Loading>Loading...</Loading>}
       {me && me[0] && <Me user={me[0]!} />}
-      {channels.map((c: SlackConversation, i: number) => (
-        <Channel
-          active={activeChannel ? c.id == activeChannel.id : false}
-          key={c.name}
-          title={c.name}
-          href={`#${c.name}`}
-          onClick={() => onChannelSelect(c)}
-        >
-          <Hashtag>#</Hashtag>
-          <Title>{c.name}</Title>
-          <Short>{c.name.slice(0, 2)}</Short>
-        </Channel>
-      ))}
+      <nav aria-labelledby="sections-heading">
+        <h3 id="sections-heading" style={{ margin: 0, visibility: "hidden" }}>
+          Channel List
+        </h3>
+        <ul style={{ padding: 0, margin: 0 }}>
+          {channels.map((c: SlackConversation, i: number) => (
+            <Li key={c.name}>
+              <Channel
+                active={activeChannel ? c.id == activeChannel.id : false}
+                title={c.name}
+                href={`#${c.name}`}
+                onClick={() => onChannelSelect(c)}
+                aria-current={activeChannel ? "page" : undefined}
+              >
+                <Hashtag aria-hidden="true">#</Hashtag>
+                <Title aria-label={`channel ${c.name}`}>{c.name}</Title>
+                <Short aria-hidden="true">{c.name.slice(0, 2)}</Short>
+              </Channel>
+            </Li>
+          ))}
+        </ul>
+      </nav>
     </Channels>
   );
 }
