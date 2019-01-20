@@ -6,6 +6,7 @@ _the article is work-in-progress, it mostly likely will be split into segments_
   - [Isn't desktop software dying?](#isnt-desktop-software-dying)
   - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
   - ["New Wave" vs "Old school"](#%22new-wave%22-vs-%22old-school%22)
+  - [Immediate Mode GUI](#immediate-mode-gui)
 - [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
 - [Electron](#electron)
 - [TODO: WebView wrapper https://github.com/Boscop/web-view](#todo-webview-wrapper-httpsgithubcomboscopweb-view)
@@ -75,6 +76,8 @@ Web could be banned, because URL != server API endpoint, URL is more like a name
 **Small indie app**
 
 ### "New Wave" vs "Old school"
+
+### Immediate Mode GUI
 
 ## Showcase: a chat app in different frameworks
 
@@ -295,8 +298,7 @@ This is not complete.
 **Editor**: CLion
 **Renderer** Not included, you can add it or copy from examples (GLFW3, GDI2, SDL, X11, etc.)
 
-I was so excited about this. Single-file dependency (On macOS it requires installing `glfw`, `glew` to compile), plain C, OpenGL.
-After compiling and running the example projects it was indeed very performant.
+Another immediate mode GUI. Single-file dependency (On macOS it requires installing `glfw`, `glew` to compile), plain C, OpenGL.
 
 At first glance it looks like everything that you can expect from it: the rendering is blurry, no accessiblity bridge, no OS-awareness, and there are some layout artifacts:
 
@@ -307,7 +309,11 @@ In real life, some issues can be mitigated if you build a very complex app and a
 
 Using a wrapper also nice if you want to write a lot of code, and there are plenty of it, e.g. Rust, Go, Python.
 
-Other Issues:
+[mwcampbell wrote](https://news.ycombinator.com/item?id=16347902)
+
+> Technical follow-up: It seems to me that implementing today's platform accessibility APIs (e.g. UI Automation for Windows, AT-SPI for Unix) would be difficult if not impractical for an immediate-mode toolkit like this one.
+> These accessibility APIs expose a tree of UI objects, which the client (e.g. screen reader) can freely navigate and query. This basically assumes that there's a tree of UI objects in memory, which is the case for all mainstream toolkits as far as I know. But that's not the case for an immediate-mode toolkit. At least with Nuklear, the content and state of the UI (e.g. the label and current checked state of a checkbox) aren't stored anywhere in the toolkit's data structures. So I guess applications would have to play a very active role in implementing accessibility APIs, much more than they would with, say, Qt or even Win32.
+> Other Issues:
 
 - OpenGL is deprecated on macOS
 - [Dynamic height](https://github.com/vurtun/nuklear/issues/504)
