@@ -16,7 +16,7 @@ _the article is work-in-progress, it mostly likely will be split into segments_
 - [TODO: Libui (proton-native)](#todo-libui-proton-native)
 - [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
 - [TODO: sciter](#todo-sciter)
-- [TODO: nuklear](#todo-nuklear)
+- [nuklear](#nuklear)
 - [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
 - [TODO: WDL](#todo-wdl)
 - [TODO: Qt](#todo-qt)
@@ -286,7 +286,32 @@ This is not complete.
 
 ## TODO: sciter
 
-## TODO: nuklear
+## nuklear
+
+[https://github.com/vurtun/nuklear](https://github.com/vurtun/nuklear)
+
+**Build system**: CMake
+**Launguage**: C
+**Editor**: CLion
+**Renderer** Not included, you can add it or copy from examples (GLFW3, GDI2, SDL, X11, etc.)
+
+I was so excited about this. Single-file dependency (On macOS it requires installing `glfw`, `glew` to compile), plain C, OpenGL.
+After compiling and running the example projects it was indeed very performant.
+
+At first glance it looks like everything that you can expect from it: the rendering is blurry, no accessiblity bridge, no OS-awareness, and there are some layout artifacts:
+
+![nuklear example widget layout problems with window resizing](https://user-images.githubusercontent.com/1004115/51437327-fc572400-1cad-11e9-87f8-a8032ffd98e0.gif)
+
+But this is just one example app, the other one from repository (`extended.c`) looks much better, although, text rendering is still off.
+In real life, some issues can be mitigated if you build a very complex app and able to invest into it.
+
+Using a wrapper also nice if you want to write a lot of code, and there are plenty of it, e.g. Rust, Go, Python.
+
+Other Issues:
+
+- OpenGL is deprecated on macOS
+- [Dynamic height](https://github.com/vurtun/nuklear/issues/504)
+- [Scroll to bottom of a scrollbar](https://github.com/vurtun/nuklear/issues/326)
 
 ## TODO: The framework Quip is using if available
 
