@@ -1,6 +1,6 @@
 [![](https://img.shields.io/badge/desktopui-slack-green.svg?logo=slack)](https://join.slack.com/t/desktopui/shared_invite/enQtNTE4NjEyNTA1MzE5LTczZWYzZGQ4YWVhNmFjMWE1N2U2M2FjOGVmYjljMTkyM2I3NjM2OWVhNmNhYTBkZWQxODcxMWY3ZDlhM2YzY2Q)
 
-_the article is work-in-progress_
+_the article is work-in-progress, it mostly likely will be split into segments_
 
 - [Intro](#intro)
   - [Isn't desktop software dying?](#isnt-desktop-software-dying)
@@ -16,7 +16,7 @@ _the article is work-in-progress_
 - [TODO: Libui (proton-native)](#todo-libui-proton-native)
 - [TODO: Libui (bindings for Rust/Go)](#todo-libui-bindings-for-rustgo)
 - [TODO: sciter](#todo-sciter)
-- [TODO: nulklear](#todo-nulklear)
+- [TODO: nuklear](#todo-nuklear)
 - [TODO: The framework Quip is using if available](#todo-the-framework-quip-is-using-if-available)
 - [TODO: WDL](#todo-wdl)
 - [TODO: Qt](#todo-qt)
@@ -219,7 +219,7 @@ OAuth leveraging existing Slack session in browser.
 1. Voice Over
 
 At first, after writing a prototype, I was getting "link, #webrender, we":
-<img width="600" alt="Voice over demonstration for menu, it says link, #webrender, we" src="https://user-images.githubusercontent.com/1004115/51429958-67104d00-1c25-11e9-9f08-410aa942c012.png">
+<img width="400" alt="Voice over demonstration for menu, it says link, #webrender, we" src="https://user-images.githubusercontent.com/1004115/51429958-67104d00-1c25-11e9-9f08-410aa942c012.png">
 
 Why is that?
 
@@ -264,7 +264,9 @@ It's all done in Styled components and React fully supports `aria-` attributes.
 
 So we hide `#` and `we` (needed for the compact mode), and now it looks like menu, and user knows what to expect:
 
-<img width="602" alt="The demonstration of Voice over after a small refactoring" src="https://user-images.githubusercontent.com/1004115/51430179-4f869380-1c28-11e9-9276-6b9e889f4ec7.png">
+<img width="402" alt="The demonstration of Voice over after a small refactoring" src="https://user-images.githubusercontent.com/1004115/51430179-4f869380-1c28-11e9-9276-6b9e889f4ec7.png">
+
+And what's nice, we can use LightHouse to inspect accessiblity since our UI is basically a html opened in web browser.
 
 This is not complete.
 
@@ -284,7 +286,7 @@ This is not complete.
 
 ## TODO: sciter
 
-## TODO: nulklear
+## TODO: nuklear
 
 ## TODO: The framework Quip is using if available
 
