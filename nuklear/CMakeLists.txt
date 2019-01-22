@@ -25,6 +25,6 @@ include_directories(vendor ${OPENGL_INCLUDE_DIRS} ${GLEW_INCLUDE_DIRS} ${GLFW_IN
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(nuklear main.c style.c vendor/nuklear.h vendor/nuklear_glfw_gl3.h)
+add_executable(nuklear main.c vendor/nuklear.h vendor/nuklear_glfw_gl3.h)
 
 target_link_libraries(nuklear ${OPENGL_gl_LIBRARY} ${GLEW_LIBRARY} ${GLFW_LIBRARIES} ${GLU_LIBRARIES})

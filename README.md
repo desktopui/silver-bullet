@@ -75,6 +75,8 @@ Web could be banned, because URL != server API endpoint, URL is more like a name
 
 **Small indie app**
 
+Consider something like Macbook Alarm. Almost no UI.
+
 ### "New Wave" vs "Old school"
 
 ### Immediate Mode GUI
