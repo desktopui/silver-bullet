@@ -285,6 +285,10 @@ This is not complete.
 
 ## TODO: Flutter for desktop
 
+## revery
+
+https://github.com/revery-ui/revery
+
 ## TODO: Libui (proton-native)
 
 ## TODO: Libui (bindings for Rust/Go)
