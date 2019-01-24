@@ -122,7 +122,8 @@ Setup used for building a showcase app:
 
 **Renderer** Software renderer for DOM (Skia) + WebGL
 
-Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing. For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile, and infinite amount of integrations with tools UI designers are using.
+Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing.
+For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile on every machine your app installed, and infinite amount of integrations with design tools.
 
 The browser is an incredibly complicated piece of software, comparable with the Operating System itself. There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it.
 
@@ -314,6 +315,106 @@ But this is just one example app, the other one from repository (`extended.c`) l
 In real life, some issues can be mitigated if you build a very complex app and able to invest into it.
 
 Using a wrapper also nice if you want to write a lot of code, and there are plenty of it, e.g. Rust, Go, Python.
+
+So the basic idea looks like this:
+
+```c
+  while(true) {
+    // draw a frame
+  }
+```
+
+Or to be more specific:
+
+```c
+
+#include "nuklear.h"
+#include "nuklear_glfw_gl3.h"
+// ..
+// Event loop
+while (!glfwWindowShouldClose(win)) {
+  if (nk_begin(ctx, "Demo", nk_rect(50, 50, 230, 250),
+                         NK_WINDOW_BORDER | NK_WINDOW_MOVABLE | NK_WINDOW_SCALABLE |
+                             NK_WINDOW_MINIMIZABLE | NK_WINDOW_TITLE)) {
+    // ..
+    nk_layout_row_static(ctx, 30, 80, 1);
+    if (nk_button_label(ctx, "button"))
+        fprintf(stdout, "button pressed\n");
+    }
+    // ..
+}
+```
+
+So nuklide consists of a bunch of nk\_ functions that "draws" something on the screen and handling the input **each frame** using the backend you provided.
+In this case it's [glfw3](#glfw3)
+
+What does `nk_button_label` do? It's an alias:
+
+```
+int nk_button_label(struct nk_context *ctx, const char *title)
+{
+    return nk_button_text(ctx, title, nk_strlen(title));
+}
+```
+
+roughly transformed into:
+
+```c
+{
+    // ..
+    /* calculate button content space */
+    content->x = r.x + style->padding.x + style->border + style->rounding;
+    content->y = r.y + style->padding.y + style->border + style->rounding;
+    content->w = r.w - (2 * style->padding.x + style->border + style->rounding*2);
+    content->h = r.h - (2 * style->padding.y + style->border + style->rounding*2);
+
+    /* execute button behavior */
+    bounds.x = r.x - style->touch_padding.x;
+    bounds.y = r.y - style->touch_padding.y;
+    bounds.w = r.w + 2 * style->touch_padding.x;
+    bounds.h = r.h + 2 * style->touch_padding.y;
+
+     if (nk_input_is_mouse_hovering_rect(i, r)) {
+        *state = NK_WIDGET_STATE_HOVERED;
+        if (nk_input_is_mouse_down(i, NK_BUTTON_LEFT))
+            *state = NK_WIDGET_STATE_ACTIVE;
+        if (nk_input_has_mouse_click_in_rect(i, NK_BUTTON_LEFT, r)) {
+            ret = (behavior != NK_BUTTON_DEFAULT) ?
+                nk_input_is_mouse_down(i, NK_BUTTON_LEFT):
+                #ifdef NK_BUTTON_TRIGGER_ON_RELEASE
+                nk_input_is_mouse_released(i, NK_BUTTON_LEFT);
+                #else
+                nk_input_is_mouse_pressed(i, NK_BUTTON_LEFT);
+                #endif
+    // ..
+    if (style->draw_begin) style->draw_begin(out, style->userdata);
+    nk_draw_button_text(out, &bounds, &content, state, style, string, len, align, font);
+    if (style->draw_end) style->draw_end(out, style->userdata);
+
+    // ..
+}
+```
+
+So far we only see library-specific code, but Nuklear has a lot of backends, and to add one you need to implement a few functions
+how to draw geometry on the screen, how handle input devices such as mouses. This is how glfw OpenGL3 specific code looks like:
+
+```
+// ..
+/* iterate over and execute each draw command */
+ nk_draw_foreach(cmd, &glfw.ctx, &dev->cmds)
+ {
+   if (!cmd->elem_count)
+     continue;
+   glBindTexture(GL_TEXTURE_2D, (GLuint)cmd->texture.id);
+   glScissor(
+       (GLint)(cmd->clip_rect.x * glfw.fb_scale.x),
+       (GLint)((glfw.height - (GLint)(cmd->clip_rect.y + cmd->clip_rect.h)) * glfw.fb_scale.y),
+       (GLint)(cmd->clip_rect.w * glfw.fb_scale.x),
+       (GLint)(cmd->clip_rect.h * glfw.fb_scale.y));
+   glDrawElements(GL_TRIANGLES, (GLsizei)cmd->elem_count, GL_UNSIGNED_SHORT, offset);
+   offset += cmd->elem_count;
+ }
+```
 
 [mwcampbell wrote](https://news.ycombinator.com/item?id=16347902)
 
