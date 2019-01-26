@@ -1,0 +1,24 @@
+# Dependencies
+markdown: redcarpet
+highlighter: pygments
+
+# Permalinks
+permalink: pretty
+
+# Setup
+title: Silver Bullet
+tagline: "Desktop UI"
+description: "Implementing a chat app in different Desktop GUI frameworks"
+url: http://hyde.getpoole.com
+baseurl: /
+
+author:
+  name: "Dmitry Loktev"
+  url: https://twitter.com/potomushto
+
+paginate: 5
+
+# Custom vars
+version: 2.1.0
+
+github: [metadata]
