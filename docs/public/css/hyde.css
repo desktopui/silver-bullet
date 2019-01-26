@@ -45,6 +45,7 @@ html {
 
 .flexbody {
   display: flex;
+  flex-direction: column;
 }
 @media (min-width: 48em) {
   .flexbody {

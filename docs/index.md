@@ -21,13 +21,13 @@ In short:
 
 ## 10 Popular Desktop Applications and the trade-offs
 
-**Microsoft Office**
-
-Classic, client-side value, with a huge legacy and with ongoing process of rewriting. No Linux version.
-
 **Adobe Photoshop**
 
 Classic, client-side value, with a huge legacy and with ongoing process of rewriting. No Linux version.
+
+**Microsoft Office**
+
+_to be fact-checked_ Classic, client-side value, with a huge legacy and with ongoing process of rewriting. No Linux version.
 
 **Skype**
 

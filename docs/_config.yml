@@ -8,7 +8,7 @@ permalink: pretty
 # Setup
 title: Silver Bullet
 tagline: "Exploring desktop UI frameworks"
-description: "Implementing a chat app in different Desktop GUI frameworks"
+description: "Implementing a chat app in different GUI frameworks"
 url: https://desktopui.github.io/silver-bullet
 baseurl: /silver-bullet/
 
