@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Intro
+title: Introduction
 ---
 
 - [Isn't desktop dying?](#isnt-desktop-dying)

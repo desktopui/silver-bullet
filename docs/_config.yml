@@ -9,8 +9,8 @@ permalink: pretty
 title: Silver Bullet
 tagline: "Exploring desktop UI frameworks"
 description: "Implementing a chat app in different Desktop GUI frameworks"
-url: https://desktopui.github.io
-baseurl: /
+url: https://desktopui.github.io/silver-bullet
+baseurl: /silver-bullet
 
 author:
   name: "Dmitry Loktev"
