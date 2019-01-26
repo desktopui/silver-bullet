@@ -19,8 +19,8 @@
       site.baseurl and node.url != "/" %}
       <a
         class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}"
-        href="{{ node.url }}"
-        >{{ node.title }} -> {{ site.baseurl }} {{ node.url }} -> {{ page.url }}
+        href="{{ site.baseurl }}{{ node.url }}"
+        >{{ node.title }}
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}
 
