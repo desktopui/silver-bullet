@@ -1,11 +1,22 @@
 ---
 layout: page
 title: Electron
+tagline: Packed Chromium + Node.js
 ---
 
-[https://electronjs.org](https://electronjs.org)
+- [Internals](#internals)
+- [Developer experience](#developer-experience)
+- [Network](#network)
+- [OS Integration](#os-integration)
+- [Accessibility (a11y)](#accessibility-a11y)
+  - [Voice Over](#voice-over)
+- [Animations](#animations)
+- [Theme support](#theme-support)
+
+| **Home** | [https://electronjs.org](https://electronjs.org) |
 | **Platforms** | Linux, macOS, Windows |
 | **Renderer** | Skia + WebGL |
+| **Download Electron Chat** | Coming soon |
 
 Setup used for building a showcase app:
 
@@ -14,27 +25,19 @@ Setup used for building a showcase app:
 | **Libraries** | React, styled components |
 | **Editor** | Visual Studio Code |
 
-- [Internals](#internals)
-- [Network](#network)
-- [OS Integration](#os-integration)
-- [Developer experience](#developer-experience)
-- [Accessiblity](#accessiblity)
-- [Animations](#animations)
-
 ## Internals
 
-Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing.
-For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile on every machine your app installed, and infinite amount of integrations with design tools.
+The browser is an incredibly complicated piece of software comparable with the Operating System itself.
+There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it.
 
-The browser is an incredibly complicated piece of software, comparable with the Operating System itself. There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it.
-
-Let's check a simple button. In order to place an input on the screen you need HTML:
+Let's look at a simple button.
+In order to place it on the screen you need HTML:
 
 ```html
 <button type="button">Save</button>
 ```
 
-some optional CSS to style:
+some optional CSS to style this button:
 
 ```css
 button {
@@ -42,43 +45,60 @@ button {
 }
 ```
 
-and optionally add JavaScript to handle changes:
+and optionally JavaScript to handle changes:
 
 ```js
 document.querySelector("input").onchange = e => console.log(e);
 ```
 
-This is the result you get on macOS:
+This is the result you get on macOS in Chrome and Electron:
 
-<img width="70" alt="screenshot 2019-01-13 14 00 03" src="https://user-images.githubusercontent.com/1004115/51084515-2e133c80-173c-11e9-869e-7f030a4e1a7a.png">
+<img width="70" alt="A default button in Chrome" src="https://user-images.githubusercontent.com/1004115/51084515-2e133c80-173c-11e9-869e-7f030a4e1a7a.png">
 
-How does it translate to different platforms? At first glance it looks like a native button on macOS, but when we press it, we can spot a little difference:
+At first glance it looks like a native button on macOS, but when we press it, we can spot a little difference comparing to the same button in Safari:
 
 ![a pressed button in Chrome](https://user-images.githubusercontent.com/1004115/51084508-0e7c1400-173c-11e9-8e01-afae48d71047.gif)
 
 ![a pressed button in Safari](https://user-images.githubusercontent.com/1004115/51084915-070c3900-1743-11e9-9040-87c1fa4395db.gif)
 
-Why is it happening? If we dump our rendered chat client from HTML+CSS to Skia's internal representation format and use a debugger, we can watch a step-by-step demonstration of how the whole document was painted by using lower-level graphical instructions:
+Why is it happening? If we dump our rendered chat client from HTML+CSS to Skia's internal representation format and use a debugger,
+we can watch a step-by-step demonstration of how the whole document was painted by using lower-level graphical instructions:
 
-<img width="350" alt="Skia debugger step-by-step painting process of a chat" src="https://user-images.githubusercontent.com/1004115/51084323-92cc9800-1738-11e9-94fe-d40e56f16830.gif">
+<img width="450" alt="Skia debugger step-by-step painting process of a chat" src="https://user-images.githubusercontent.com/1004115/51084323-92cc9800-1738-11e9-94fe-d40e56f16830.gif">
 
-And the button here is just an image of button's background + set of glyphs drawn over it + some transformation logic.
+And the button here is just an image of button's background + set of glyphs drawn over it + some transformation logic applied to get the correct size.
 
-So the button in Chrome doesn't match native look and feel for every operating system out there. But who cares? In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably won't look anything like a default native button anyway:
+So the button in Chrome doesn't match the native look&feel for every operating system out there. But who cares?
+In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably won't look anything like a default native button anyway:
 
 <img width="90" alt="A styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
 
-For a certain group of desktop apps, though, you may want to "mimic" its look to make it closer to system controls. That is possible by carefully crafting the right CSS, but it'll be harder to maintain over the time. As an example, look at the library that provided a set of macOS UI controls https://screenisland.com/maverix/#/controls, it became outdated the next second Apple released the next macOS version.
+This is not always true for the desktop. For a certain group of desktop apps, though, you may want to "mimic" the look to make it closer to system controls.
+That is still possible by carefully crafting the right CSS, but it'll be harder to maintain over the time. As an example, look at the library that provided a set of macOS UI controls called [Maverix](https://screenisland.com/maverix/#/controls), it became outdated the next second Apple released the next macOS version.
 
-Good news, we don't need anything like that for our chat app, and probably for any UI-heavy app.
+Good news, we don't need anything like for the most parts of our [chat app](/#chat-app-is-the-new-todo-list), we can use custom styles.
+
+## Developer experience
+
+Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing.
+For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile on every machine your app installed, and infinite amount of integrations with design tools.
+
+<img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
+
+The level of **googlability** of any problem is really high, either that is an npm package, a stackoverflow question or a GitHub issue similar to yours.
 
 ## Network
 
-What about writing a network code, HTTP and WebSocket in particular? We can guess just by looking at the names of these protocols, we have Hypertext and Web here, both invented for the web browser. Surprisingly, though, HTTP was much more suited initially for interlinked documents, not apps, so all we have is XmlHttpRequest and Fetch and abstractions over them. But it's no longer true, and you have things like WebRTC now and can build Skype on top of it.
+What about writing a network code, HTTP and WebSocket in particular?
+We can guess just by looking at the names of these protocols, we have **Hyper**text and **Web**Socket here, both invented for the **web** browser, which exactly Electron is.
+Surprisingly, though, HTTP was much more suited initially for interlinked documents, not apps, so all we have is XmlHttpRequest and Fetch and abstractions over them.
+Now, the things are changing and browsers get better. Also, you have WebRTC now and can try to build Skype on top of it.
 
 And again we're writing web application, so to start using Slack's API we'll go to npm:
 
-`yarn add @slack/client`
+```
+yarn add @slack/client
+```
 
 and use it like this for HTTP API:
 
@@ -113,24 +133,21 @@ To be able to write an app
 
 OAuth leveraging existing Slack session in browser.
 
-## Developer experience
+## Accessibility (a11y)
 
-<img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
-
-## Accessiblity
+Let's enable acessibility on macOS and check simple things:
 
 <img width="400" alt="macOS accessibility shortcuts" src="https://user-images.githubusercontent.com/1004115/51406915-8c408500-1b6b-11e9-9243-f6c2eab9bc1a.png">
 
-![macOS accessiblity quick links]()
+### Voice Over
 
-1. Voice Over
+At first I was getting "link, #webrender, we" on each menu:
 
-At first, after writing a prototype, I was getting "link, #webrender, we":
-<img width="400" alt="Voice over demonstration for menu, it says link, #webrender, we" src="https://user-images.githubusercontent.com/1004115/51429958-67104d00-1c25-11e9-9f08-410aa942c012.png">
+<img width="600" alt="Voice over demonstration for menu, it says link, #webrender, we" src="https://user-images.githubusercontent.com/1004115/51429958-67104d00-1c25-11e9-9f08-410aa942c012.png">
 
 Why is that?
 
-Because produced HTML looked like this:
+Because React components inside `ChannelList` produced HTML that looked like this:
 
 ```html
 <div>
@@ -146,7 +163,8 @@ Because produced HTML looked like this:
 </div>
 ```
 
-After reading [https://inclusive-components.design/menus-menu-buttons/](https://inclusive-components.design/menus-menu-buttons/), I added some semantics and aria attributes:
+After reading [https://inclusive-components.design/menus-menu-buttons/](https://inclusive-components.design/menus-menu-buttons/),
+I added some semantics and aria attributes:
 
 ```html
 <nav>
@@ -167,14 +185,16 @@ After reading [https://inclusive-components.design/menus-menu-buttons/](https://
 </nav>
 ```
 
-It's all done in Styled components and React fully supports `aria-` attributes.
+It's all done in Styled Components and React fully supports `aria-` attributes.
 
 So we hide `#` and `we` (needed for the compact mode), and now it looks like menu, and user knows what to expect:
 
 <img width="402" alt="The demonstration of Voice over after a small refactoring" src="https://user-images.githubusercontent.com/1004115/51430179-4f869380-1c28-11e9-9276-6b9e889f4ec7.png">
 
-And what's nice, we can use LightHouse to inspect accessiblity since our UI is basically a html opened in web browser.
+And what's nice, we can use LightHouse to inspect accessiblity since our UI is basically a html opened in web browser and we can use Devtron — a tool to debug Electron apps.
 
 ## Animations
 
 To be continued...
+
+## Theme support

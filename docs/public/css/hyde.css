@@ -104,6 +104,17 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+a.sidebar-nav-item:hover .sidebar-item-tagline {
+  display: inline-block;
+}
+
+.sidebar-item-tagline {
+  color: darkgray;
+  font-size: 0.75rem;
+  text-decoration: none;
+  display: none;
+}
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the

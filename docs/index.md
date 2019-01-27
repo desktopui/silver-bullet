@@ -7,7 +7,7 @@ title: Introduction
 - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
 - ["New Wave" vs "Old school"](#new-wave-vs-old-school)
 - [Immediate Mode GUI](#immediate-mode-gui)
-- [Showcase: a chat app in different frameworks](#showcase-a-chat-app-in-different-frameworks)
+- [Chat app is the new TODO list](#chat-app-is-the-new-todo-list)
 
 ## Isn't desktop dying?
 
@@ -67,15 +67,15 @@ Consider something like Macbook Alarm. Almost no UI.
 
 https://caseymuratori.com/blog_0001
 
-## Showcase: a chat app in different frameworks
+## Chat app is the new TODO list
 
 Instead of a TODO list, we are going to implement a simplistic chat app in hope of searching some answers for various problems that needs to be solved in desktop UI engineering:
 
 - Network: HTTP requests and web sockets
 - Animation
-- Accessiblity
+- Accessibility (a11y)
 - Responsive layout
-- Text rendering and internatialization
+- Text rendering and internationalization (i18n)
 - Platform-specific API that browsers don't have (yet) and OS integration.
 - Theme support and/or the dark theme in Mojavi
 - Advanced UI: in this case either inversible scroll or a virtualized list or complex markdown layout

@@ -1,4 +1,5 @@
 ---
 layout: page
-title: React Native (Microsoft)
+title: React Native Windows
+tagline: Backed by Microsoft in C# and Mono
 ---
