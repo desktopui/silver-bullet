@@ -18,7 +18,7 @@ tagline: Packed Chromium + Node.js
 | **Renderer** | Skia + WebGL |
 | **Download Electron Chat** | Coming soon |
 
-Setup used for building a showcase app:
+Tech stack used for building a showcase app:
 
 | **Build system** | Webpack |
 | **Languages** | TypeScript |
@@ -185,7 +185,7 @@ I added some semantics and aria attributes:
 </nav>
 ```
 
-It's all done in Styled Components and React fully supports `aria-` attributes.
+It's all done in styled-components and React fully supports `aria-` attributes.
 
 So we hide `#` and `we` (needed for the compact mode), and now it looks like menu, and user knows what to expect:
 

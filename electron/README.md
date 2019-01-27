@@ -1,6 +1,6 @@
 ## Electron
 
-TypeScript, React, Styled Components, Visual Studio Code
+TypeScript, React, styled-components, Visual Studio Code
 
 ## Build
 

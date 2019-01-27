@@ -4,12 +4,25 @@ title: Nuklear
 tagline: Small, Immediate Mode, C
 ---
 
+- [Internals](#internals)
+- [Developer experience](#developer-experience)
+- [Accessiblity](#accessiblity)
+- [OS Integration](#os-integration)
+- [Other Issues](#other-issues)
+-
+
 [https://github.com/vurtun/nuklear](https://github.com/vurtun/nuklear)
 
-**Build system**: CMake
-**Launguage**: C
-**Editor**: CLion
 **Renderer** Not included, you can add it or copy from examples (GLFW3, GDI2, SDL, X11, etc.)
+
+Tech stack used for building a showcase app:
+
+| **Build system** | CMake |
+| **Languages** | C |
+| **Libraries** | GLFW |
+| **Editor** | CLion |
+
+## Internals
 
 Another immediate mode GUI. Single-file dependency (On macOS it requires installing `glfw`, `glew` to compile), plain C, OpenGL.
 
@@ -131,6 +144,10 @@ how to draw geometry on the screen, how handle input devices such as mouses. Thi
  }
 ```
 
+## Developer experience
+
+It compiles damn fast. But C is unsafe language. There are options.
+
 ## Accessiblity
 
 [mwcampbell wrote](https://news.ycombinator.com/item?id=16347902)
@@ -139,6 +156,12 @@ how to draw geometry on the screen, how handle input devices such as mouses. Thi
 > These accessibility APIs expose a tree of UI objects, which the client (e.g. screen reader) can freely navigate and query. This basically assumes that there's a tree of UI objects in memory, which is the case for all mainstream toolkits as far as I know. But that's not the case for an immediate-mode toolkit. At least with Nuklear, the content and state of the UI (e.g. the label and current checked state of a checkbox) aren't stored anywhere in the toolkit's data structures. So I guess applications would have to play a very active role in implementing accessibility APIs, much more than they would with, say, Qt or even Win32.
 
 Could we though back the tree itself?
+
+## OS Integration
+
+So we need to impelement deep linking.
+
+https://github.com/jimon/osx_app_in_plain_c/blob/master/main.c
 
 ## Other Issues
 

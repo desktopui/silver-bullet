@@ -1,6 +1,6 @@
-## Electron
+## Nuklear
 
-TypeScript, React, Styled Components, Visual Studio Code
+CLion, GLFW
 
 ## Build
 

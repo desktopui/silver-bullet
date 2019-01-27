@@ -12,7 +12,8 @@ title: Introduction
 
 ## TLDR
 
-I want to write an app, and I want to make it cross-platform. What should I use?
+I want to write an app, make it cross-platform, I want to do it in reasonable amount of time and with the smallest overhead possible.
+What should I use?
 
 It depends.
 
