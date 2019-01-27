@@ -80,6 +80,10 @@ html {
   color: #fff;
 }
 
+.sidebar a:hover {
+  text-decoration: none;
+}
+
 /* About section */
 .sidebar-about h1 {
   color: #fff;
@@ -100,19 +104,27 @@ a.sidebar-nav-item:hover,
 a.sidebar-nav-item:focus {
   text-decoration: underline;
 }
+
 .sidebar-nav-item.active {
   font-weight: bold;
 }
 
 a.sidebar-nav-item:hover .sidebar-item-tagline {
-  display: inline-block;
+  display: inline;
+}
+
+a.sidebar-nav-item .active {
+  display: inline;
 }
 
 .sidebar-item-tagline {
   color: darkgray;
   font-size: 0.75rem;
   text-decoration: none;
-  display: none;
+}
+
+.sidebar-nav-wrapper {
+  text-overflow: ellipsis;
 }
 
 /* Sticky sidebar

@@ -1,5 +1,5 @@
 <div class="sidebar">
-  <div class="container">
+  <div class="container" style="padding: 0">
     <div class="sidebar-about">
       <h1>
         <a href="{{ site.baseurl }}"> {{ site.title }} </a>
@@ -20,8 +20,13 @@
       <a
         class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}"
         href="{{ node.url }}"
-        >{{ node.title
-        }}<small class="sidebar-item-tagline">&nbsp;{{ node.tagline }}</small>
+        ><div class="sidebar-nav-wrapper">
+          {{ node.title }}
+          <small
+            class="sidebar-item-tagline {% if page.url == node.url %} active{% endif %}"
+            >&nbsp;{{ node.tagline }}</small
+          >
+        </div>
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}
 
