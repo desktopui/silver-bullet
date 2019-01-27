@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Nuklear
-tagline: Super small Immediate Mode GUI for C
+tagline: Small, Immediate Mode, C
 ---
 
 [https://github.com/vurtun/nuklear](https://github.com/vurtun/nuklear)

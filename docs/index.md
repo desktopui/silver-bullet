@@ -3,20 +3,27 @@ layout: page
 title: Introduction
 ---
 
+- [TLDR](#tldr)
 - [Isn't desktop dying?](#isnt-desktop-dying)
 - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
 - ["New Wave" vs "Old school"](#new-wave-vs-old-school)
 - [Immediate Mode GUI](#immediate-mode-gui)
 - [Chat app is the new TODO list](#chat-app-is-the-new-todo-list)
 
+## TLDR
+
+I want to write an app, and I want to make it cross-platform. What should I use?
+
+It depends.
+
 ## Isn't desktop dying?
 
 In short:
 
 - No.
-- Ok, but slowly
-- Professional software
-- That we consider mobile will evolve
+- Ok, but slowly.
+- Professional software?
+- That we consider mobile apps will evolve eventually anyway.
 - It's fun to learn anyway!
 
 ## 10 Popular Desktop Applications and the trade-offs
@@ -71,15 +78,15 @@ https://caseymuratori.com/blog_0001
 
 Instead of a TODO list, we are going to implement a simplistic chat app in hope of searching some answers for various problems that needs to be solved in desktop UI engineering:
 
-- Network: HTTP requests and web sockets
-- Animation
 - Accessibility (a11y)
-- Responsive layout
-- Text rendering and internationalization (i18n)
-- Platform-specific API that browsers don't have (yet) and OS integration.
-- Theme support and/or the dark theme in Mojavi
-- Advanced UI: in this case either inversible scroll or a virtualized list or complex markdown layout
+- Advanced UI elements: in this case either inversible scroll or a virtualized list or complex markdown layout
+- Animation
 - Basic tests
+- Network: HTTP requests and web sockets
+- Text rendering and internationalization (i18n)
+- Theme support and/or the dark theme in Mojavi
+- Platform-specific API that browsers don't have (yet) and OS integration.
+- Responsive layout
 
 It's not that kind of test "let's measure some metrics, get scores and choose the best", like you read when choosing a TV. It's merely an attempt
 to explore current possibilities to write GUI and learn something new.
