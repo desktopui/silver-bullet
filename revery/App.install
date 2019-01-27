@@ -1,0 +1,12 @@
+lib: [
+  "_build/install/default/lib/App/META" {"META"}
+  "_build/install/default/lib/App/opam" {"opam"}
+]
+bin: [
+  "_build/install/default/bin/App" {"App"}
+  "_build/install/default/bin/Lato-Regular.ttf"
+]
+doc: [
+  "_build/install/default/doc/App/LICENSE"
+  "_build/install/default/doc/App/README.md"
+]
