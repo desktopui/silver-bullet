@@ -2,6 +2,7 @@
 layout: page
 title: Nuklear
 tagline: Small, Immediate Mode, C
+active: true
 ---
 
 - [Internals](#internals)
@@ -70,10 +71,14 @@ while (!glfwWindowShouldClose(win)) {
         fprintf(stdout, "button pressed\n");
     }
     // ..
+  }
 }
 ```
 
-So nuklide consists of a bunch of nk\_ functions that "draws" something on the screen and handling the input **each frame** using the backend you provided.
+> GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.
+> GLFW is written in C and has native support for Windows, macOS and many Unix-like systems using the X Window System, such as Linux and FreeBSD.
+
+`nuklide.h` consists of a bunch of nk\_ functions that "draw" something on the screen and handle user input **each frame** using the backend you provided.
 In this case it's [glfw3](#glfw3)
 
 What does `nk_button_label` do? It's an alias:
@@ -152,8 +157,8 @@ It compiles damn fast. But C is unsafe language. There are options.
 
 [mwcampbell wrote](https://news.ycombinator.com/item?id=16347902)
 
-> Technical follow-up: It seems to me that implementing today's platform accessibility APIs (e.g. UI Automation for Windows, AT-SPI for Unix) would be difficult if not impractical for an immediate-mode toolkit like this one.
-> These accessibility APIs expose a tree of UI objects, which the client (e.g. screen reader) can freely navigate and query. This basically assumes that there's a tree of UI objects in memory, which is the case for all mainstream toolkits as far as I know. But that's not the case for an immediate-mode toolkit. At least with Nuklear, the content and state of the UI (e.g. the label and current checked state of a checkbox) aren't stored anywhere in the toolkit's data structures. So I guess applications would have to play a very active role in implementing accessibility APIs, much more than they would with, say, Qt or even Win32.
+_Technical follow-up: It seems to me that implementing today's platform accessibility APIs (e.g. UI Automation for Windows, AT-SPI for Unix) would be difficult if not impractical for an immediate-mode toolkit like this one._
+_These accessibility APIs expose a tree of UI objects, which the client (e.g. screen reader) can freely navigate and query. This basically assumes that there's a tree of UI objects in memory, which is the case for all mainstream toolkits as far as I know. But that's not the case for an immediate-mode toolkit. At least with Nuklear, the content and state of the UI (e.g. the label and current checked state of a checkbox) aren't stored anywhere in the toolkit's data structures. So I guess applications would have to play a very active role in implementing accessibility APIs, much more than they would with, say, Qt or even Win32._
 
 Could we though back the tree itself?
 

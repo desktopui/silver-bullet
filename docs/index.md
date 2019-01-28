@@ -73,7 +73,9 @@ Consider something like Macbook Alarm. Almost no UI.
 
 ## Immediate Mode GUI
 
-https://caseymuratori.com/blog_0001
+[IMMEDIATE-MODE GRAPHICAL USER INTERFACES (2005)](https://caseymuratori.com/blog_0001)
+
+See [nuklear](/nuklear) and [imgui][/imgui]
 
 ## Chat app is the new TODO list
 
