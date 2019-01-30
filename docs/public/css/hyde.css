@@ -61,13 +61,13 @@ html {
 }
 
 .index-hero {
-  margin: 2em;
+  margin: 1em;
   align-items: center;
   text-align: center;
 }
 .index-hero .lead {
   color: #ccc;
-  font-family: "Abril Fatface", serif;
+  font-style: italic;
 }
 .index-container {
   display: flex;
