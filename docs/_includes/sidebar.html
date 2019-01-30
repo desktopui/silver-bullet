@@ -11,7 +11,7 @@
       <a
         class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}"
         href="{{ site.baseurl }}"
-        >Introduction</a
+        >Home</a
       >
 
       {% assign pages_list = site.pages %} {% for node in pages_list %} {% if
@@ -20,13 +20,7 @@
       <a
         class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}"
         href="{{ node.url }}"
-        ><div class="sidebar-nav-wrapper">
-          {{ node.title }}
-          <small
-            class="sidebar-item-tagline {% if page.url == node.url %} active{% endif %}"
-            >&nbsp;{{ node.tagline }}</small
-          >
-        </div>
+        ><div class="sidebar-nav-wrapper">{{ node.title }}</div>
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}
 

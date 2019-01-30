@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Introduction
+title: About
+tagline: ChatApp is the new TodoMVC
 ---
 
 - [TLDR](#tldr)
@@ -8,7 +9,7 @@ title: Introduction
 - [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
 - ["New Wave" vs "Old school"](#new-wave-vs-old-school)
 - [Immediate Mode GUI](#immediate-mode-gui)
-- [Chat app is the new TODO list](#chat-app-is-the-new-todo-list)
+- [ChatApp is the new TodoMVC](#chatapp-is-the-new-todomvc)
 
 ## TLDR
 
@@ -77,7 +78,7 @@ Consider something like Macbook Alarm. Almost no UI.
 
 See [nuklear](/nuklear) and [imgui][/imgui]
 
-## Chat app is the new TODO list
+## ChatApp is the new TodoMVC
 
 Instead of a TODO list, we are going to implement a simplistic chat app in hope of searching some answers for various problems that needs to be solved in desktop UI engineering:
 

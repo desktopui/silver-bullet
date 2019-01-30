@@ -1,0 +1,19 @@
+---
+layout: index
+---
+
+<div class="index-hero">
+  <h1>{{ site.title }}</h1>
+  <p class="lead">{{ site.description }}</p>
+</div>
+
+<div class="index-container">
+  {% for node in site.pages %} {% if node.title != null and node.layout ==
+  "page" and node.url != site.baseurl and node.url != "/" %}
+  <div class="index-item {% if node.empty %} empty{% endif %}">
+    <a href="{{ node.url }}"> {{ node.title }} </a>
+    <small class="sidebar-item-tagline">&nbsp;{{ node.tagline }}</small>
+  </div>
+
+  {% endif %} {% endfor %}
+</div>
