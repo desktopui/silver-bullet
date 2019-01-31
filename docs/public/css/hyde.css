@@ -86,8 +86,14 @@ html {
   text-align: center;
   box-sizing: border-box;
   flex-grow: 1;
-  width: 20%;
+  width: 100%;
   justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .index-item {
+    width: 20%;
+  }
 }
 
 .index-item a {
