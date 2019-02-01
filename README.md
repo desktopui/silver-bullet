@@ -1,6 +1,6 @@
 [![](https://img.shields.io/badge/desktopui-slack-green.svg?logo=slack)](https://join.slack.com/t/desktopui/shared_invite/enQtNTE4NjEyNTA1MzE5LTczZWYzZGQ4YWVhNmFjMWE1N2U2M2FjOGVmYjljMTkyM2I3NjM2OWVhNmNhYTBkZWQxODcxMWY3ZDlhM2YzY2Q)
 
-_the article is work-in-progress, if you want to add an implementation written in any language for any framework — you are highly welcome_
+_the article is work-in-progress, if you want to add an implementation written in any language for any framework — you are very welcome_
 
 ## Contribute
 
