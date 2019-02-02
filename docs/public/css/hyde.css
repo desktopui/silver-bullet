@@ -94,6 +94,14 @@ html {
   opacity: 0.6;
 }
 
+.index-nav ul {
+  list-style-type: none;
+}
+
+.index-nav a {
+  color: #ccc;
+}
+
 @media (min-width: 600px) {
   .index-item {
     width: 20%;

@@ -10,13 +10,18 @@
     <nav class="sidebar-nav">
       <a
         class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}"
-        href="{{ site.baseurl }}"
+        href="{{ site.baseurl }}/"
         >Home</a
       >
 
-      <a class="sidebar-nav-item" href="{{ site.github_repo }}"
-        ><i>Source code</i></a
+      <a class="sidebar-nav-item{% if page.url == '/motivation' %} active{% endif %}" href="{{ site.github_repo }}"
+        >Motivation</a
       >
+
+      <a class="sidebar-nav-item" href="{{ site.github_repo }}"
+        >Source code</a
+      >
+      <div />
 
       {% assign pages_list = site.pages %} {% for node in pages_list %} {% if
       node.title != null %} {% if node.layout == "page" %} {% if node.url !=
@@ -25,7 +30,7 @@
         class="sidebar-nav-item{% if page.url == node.url %} active{% endif %} {% if node.empty %} empty{% endif %}"
         href="{{ site.baseurl }}{{ node.url }}"
         ><div class="sidebar-nav-wrapper">
-          {{ node.title }} {{ site.baseurl }}{{ node.url }}
+          {{ node.title }}
         </div>
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}

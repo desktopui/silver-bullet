@@ -20,3 +20,4 @@ paginate: 5
 version: 2.1.0
 
 github: [metadata]
+github_repo: https://github.com/desktopui/silver-bullet

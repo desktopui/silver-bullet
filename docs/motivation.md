@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Intro
-tagline: ChatApp is the new TodoMVC
+title: Motivation
 ---
 
-- [TLDR](#tldr)
-- [Isn't desktop dying?](#isnt-desktop-dying)
-- [10 Popular Desktop Applications and the trade-offs](#10-popular-desktop-applications-and-the-trade-offs)
+- [TL;DR](#tldr)
+- [Do we need apps for desktop anyway? Isn't desktop dying?](#do-we-need-apps-for-desktop-anyway-isnt-desktop-dying)
+- [Do we need GUI frameworks at all?](#do-we-need-gui-frameworks-at-all)
+- [10 Desktop Applications and the trade-offs](#10-desktop-applications-and-the-trade-offs)
 - ["New Wave" vs "Old school"](#new-wave-vs-old-school)
 - [Immediate Mode GUI](#immediate-mode-gui)
 - [ChatApp is the new TodoMVC](#chatapp-is-the-new-todomvc)
@@ -23,13 +23,13 @@ Well, it depends.
 
 In 2018 Apple said that iOS developers earned $34 billion at App Store. 
 That figure is 28% higher than the $26.5 billion from 2017.
-It's incredibly competitive market, iOS apps, and still you probably would have better chance to get paid by doing iOS.
+It's incredibly competitive market, iOS apps, and still you probably would have better chance to get paid by doing apps for iOS, not macOS.
 
 The mobile has [overtaken](https://netmarketshare.com/device-market-share?options=%7B%22dateLabel%22%3A%22Custom%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22deviceType%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22id%22%3A%22deviceTypes%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22filter%22%3A%7B%7D%2C%22dateStart%22%3A%222017-03%22%2C%22dateEnd%22%3A%222019-01%22%2C%22plotKeys%22%3A%5B%7B%22deviceType%22%3A%22Mobile%22%7D%2C%7B%22deviceType%22%3A%22Desktop%2Flaptop%22%7D%5D%2C%22segments%22%3A%22-1000%22%7D) desktop in many ways, including traffic:
 
 ![Some weird stats from netshare about how desktop has fallen](https://user-images.githubusercontent.com/1004115/52165689-fed96500-2714-11e9-86af-9446c9337879.png)
 
-And offline web apps is the thing. Browsers eating the market, Google Docs vs Microsoft Office as an example.
+Not to mention that offline web apps is the thing. Browsers eating the market, Google Docs vs Microsoft Office as an example.
 
 Still, [5.5m Macs](https://9to5mac.com/2018/11/01/apple-earnings-fy18-q4/) were sold during 2018 Q4 and more than [75 million units](https://www.statista.com/statistics/263393/global-pc-shipments-since-1st-quarter-2009-by-vendor/) of all desktop computers were shipped in 2018.
 
@@ -48,7 +48,19 @@ So we decided that we still need desktop apps sometimes. Do we really need cross
 Why we can't use the native library that was meant to be the best?
 A lot of code could be shared? So let's do that.
 
-...
+```
+      Pixels on the screen
+      |               |
+ forms, dialogs   complex text layout, canvas, 3d scenes
+
+      logic behind the screen
+      |               |
+   OS-specific    OS-independent, domain specific
+```
+
+We already have a good example: smartphones, where Android and iOS have multiple options like Xamarin, Cordova and React Native,
+but it really depends on you app: either it's game with fully custom render with a lot of shared code
+or just a e-shop?
 
 ## 10 Desktop Applications and the trade-offs
 
