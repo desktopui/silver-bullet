@@ -14,6 +14,10 @@
         >Home</a
       >
 
+      <a class="sidebar-nav-item" href="{{ site.github_repo }}"
+        ><i>Source code</i></a
+      >
+
       {% assign pages_list = site.pages %} {% for node in pages_list %} {% if
       node.title != null %} {% if node.layout == "page" %} {% if node.url !=
       site.baseurl and node.url != "/" and node.tagline %}
@@ -22,14 +26,11 @@
         href="{{ site.baseurl.chop! }}{{ node.url }}"
         ><div class="sidebar-nav-wrapper">
           {{ node.title }} {{ site.baseurl.chop! }}{{ node.url }}
+          <li>{{ site.baseurl }}</li>
           <li>{{ site.baseurl.chop! }}</li>
         </div>
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}
-
-      <a class="sidebar-nav-item" href="{{ site.github_repo }}"
-        ><i>Source code on GitHub</i></a
-      >
     </nav>
   </div>
 </div>
