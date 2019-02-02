@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: Intro
 tagline: ChatApp is the new TodoMVC
 ---
 
@@ -11,24 +11,46 @@ tagline: ChatApp is the new TodoMVC
 - [Immediate Mode GUI](#immediate-mode-gui)
 - [ChatApp is the new TodoMVC](#chatapp-is-the-new-todomvc)
 
-## TLDR
+## TL;DR
 
-I want to write an app, make it cross-platform, I want to do it in reasonable amount of time and with the smallest overhead possible.
-What should I use?
+I want to write an app, make it cross-platform,
+do it in reasonable amount of time and with the smallest overhead possible.
+What framework should I use?
 
-It depends.
+Well, it depends.
 
-## Isn't desktop dying?
+## Do we need apps for desktop anyway? Isn't desktop dying?
 
-In short:
+In 2018 Apple said that iOS developers earned $34 billion at App Store. 
+That figure is 28% higher than the $26.5 billion from 2017.
+It's incredibly competitive market, iOS apps, and still you probably would have better chance to get paid by doing iOS.
 
-- No.
-- Ok, but slowly.
-- Professional software?
-- That we consider mobile apps will evolve eventually anyway.
-- It's fun to learn anyway!
+The mobile has [overtaken](https://netmarketshare.com/device-market-share?options=%7B%22dateLabel%22%3A%22Custom%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22deviceType%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22id%22%3A%22deviceTypes%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22filter%22%3A%7B%7D%2C%22dateStart%22%3A%222017-03%22%2C%22dateEnd%22%3A%222019-01%22%2C%22plotKeys%22%3A%5B%7B%22deviceType%22%3A%22Mobile%22%7D%2C%7B%22deviceType%22%3A%22Desktop%2Flaptop%22%7D%5D%2C%22segments%22%3A%22-1000%22%7D) desktop in many ways, including traffic:
 
-## 10 Popular Desktop Applications and the trade-offs
+![Some weird stats from netshare about how desktop has fallen](https://user-images.githubusercontent.com/1004115/52165689-fed96500-2714-11e9-86af-9446c9337879.png)
+
+And offline web apps is the thing. Browsers eating the market, Google Docs vs Microsoft Office as an example.
+
+Still, [5.5m Macs](https://9to5mac.com/2018/11/01/apple-earnings-fy18-q4/) were sold during 2018 Q4 and more than [75 million units](https://www.statista.com/statistics/263393/global-pc-shipments-since-1st-quarter-2009-by-vendor/) of all desktop computers were shipped in 2018.
+
+![image](https://user-images.githubusercontent.com/1004115/52165775-f2094100-2715-11e9-9080-a0840c3930d9.png)
+
+So desktop is definetly alive at the moment, and professional software isn't going anywere. [Yet](https://www.theverge.com/2018/10/15/17969754/adobe-photoshop-apple-ipad-creative-cloud).
+Major part of this generation is still sitting all day behind computers, even they sit with theirs smartphones in all other time.
+
+And by looking at effort Microsoft, Google and Apple doing, we might consider that mobile and web apps will evolve eventually into the same complex UI programs, facing the same problems.
+
+In the end, it's fun to learn anyway!
+
+## Do we need GUI frameworks at all?
+
+So we decided that we still need desktop apps sometimes. Do we really need cross-platform UI for that?
+Why we can't use the native library that was meant to be the best?
+A lot of code could be shared? So let's do that.
+
+...
+
+## 10 Desktop Applications and the trade-offs
 
 **Adobe Photoshop**
 

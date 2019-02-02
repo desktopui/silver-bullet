@@ -27,30 +27,26 @@ Revery tries to re-use familar to web developer concepts coming from the OCaml w
 
 Revery written in Reason and the library you're using is React: its component model, the way it handles state, JSX and CSS-in-JS (I guess CSS-in-Reason?)
 
-Although there are some difference, for example in JavaScript this
+Although there are some difference, for example in JavaScript this is valid JSX:
 
 ```js
 <Text prop={value}>Sign in with Slack</Text>
 ```
 
-is valid JSX, in Reason it would be
+in Reason it would be
 
 ```reason
  <Text prop=value>"Sign in with Slack"</Text>
 ```
 
-and [so on](https://reasonml.github.io/docs/en/jsx)
+and [so on](https://reasonml.github.io/docs/en/jsx).
 
-- Build system
-- GLFW
+Revery using GLFW.
+
 - Layout
 - React
 
 ## Developer experience
-
-### Type system
-
-Reason is more lightweight and it tries to be more friendly to web developers
 
 ```reason
 let textHeaderStyle =
@@ -65,14 +61,24 @@ let textHeaderStyle =
         );
 ```
 
+### Type system
+
+Reason is more lightweight version of OCaml and it tries to be more friendly to web developers
+
+But it's still rich functional language with a tons of useful paradigms and nice type system.
+
 ### Compilation time
 
 Esy works blazingly fast as a build system.
 
 ### Ecosystem
 
+(these screens temporary)
+
 ![image](https://user-images.githubusercontent.com/1004115/52076947-e8120180-25a0-11e9-8734-9661d58a38fe.png)
 
 ![image](https://user-images.githubusercontent.com/1004115/52076437-b8aec500-259f-11e9-8632-cbf07a2df495.png)
 
 https://github.com/facebook/reason/issues/2293
+
+![image](https://user-images.githubusercontent.com/1004115/52163661-28cf5f00-26f6-11e9-9dac-cf66eb4c2c2b.png)

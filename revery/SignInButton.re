@@ -4,7 +4,7 @@ open Revery.UI;
 open Revery.UI.Components;
 
 module SignInButton = {
-  let component = ReasonReact.statelessComponent("SignInButton");
+  let component = React.component("SignInButton");
 
   let wrapperStyle =
     Style.make(
@@ -25,17 +25,15 @@ module SignInButton = {
 
   let debug = () => print_string("hello world");
 
-  let make = (~name, _children) => {
-    ...component,
-    render: _self =>
-      <Clickable onClick=debug>
+  let make = (~name) =>
+    component(slots =>
+      <Clickable>
         <View style=wrapperStyle>
           <Text style=textHeaderStyle text=name />
         </View>
-      </Clickable>,
-  };
-  /*
-     });
+      </Clickable>
+    );
 
-   let createElement = (~children as _, ()) => React.element(make()); */
+  let createElement = (~children as _, ~name, ()) =>
+    React.element(make(~name));
 };
