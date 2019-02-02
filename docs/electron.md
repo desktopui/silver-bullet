@@ -13,7 +13,7 @@ tagline: Packed Chromium + Node.js
 - [Animations](#animations)
 - [Theme support](#theme-support)
 
-| **Home** | [https://electronjs.org](https://electronjs.org) |
+| **Web-site** | [https://electronjs.org](https://electronjs.org) |
 | **Platforms** | Linux, macOS, Windows |
 | **Renderer** | Skia + WebGL |
 | **Download Electron Chat** | Coming soon |

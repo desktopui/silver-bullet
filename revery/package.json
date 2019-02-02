@@ -20,8 +20,8 @@
     "@brisk/brisk-reconciler": "github:briskml/brisk-reconciler#f545ba0"
   },
   "scripts": {
-   "format": "bash -c \"refmt --in-place *.re\"",
-   "run": "esy x App"
+    "format": "bash -c \"refmt --in-place *.re\"",
+    "run": "esy x App"
   },
   "devDependencies": {
     "ocaml": "~4.7.0",
