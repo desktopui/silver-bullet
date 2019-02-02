@@ -2,7 +2,7 @@
   <div class="container" style="padding: 0">
     <div class="sidebar-about">
       <h1>
-        <a href="{{ site.baseurl.chop! }}/"> {{ site.title }} </a>
+        <a href="{{ site.baseurl }}/"> {{ site.title }} </a>
       </h1>
       <p class="lead">{{ site.description }}</p>
     </div>
@@ -10,7 +10,7 @@
     <nav class="sidebar-nav">
       <a
         class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}"
-        href="{{ site.baseurl.chop! }}"
+        href="{{ site.baseurl }}"
         >Home</a
       >
 
@@ -23,11 +23,9 @@
       site.baseurl and node.url != "/" and node.tagline %}
       <a
         class="sidebar-nav-item{% if page.url == node.url %} active{% endif %} {% if node.empty %} empty{% endif %}"
-        href="{{ site.baseurl.chop! }}{{ node.url }}"
+        href="{{ site.baseurl }}{{ node.url }}"
         ><div class="sidebar-nav-wrapper">
-          {{ node.title }} {{ site.baseurl.chop! }}{{ node.url }}
-          <li>{{ site.baseurl }}</li>
-          <li>{{ site.baseurl.chop! }}</li>
+          {{ node.title }} {{ site.baseurl }}{{ node.url }}
         </div>
       </a>
       {% endif %} {% endif %} {% endif %} {% endfor %}

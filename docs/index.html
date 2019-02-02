@@ -11,7 +11,7 @@ layout: index
   {% for node in site.pages %} {% if node.title != null and node.layout ==
   "page" and node.url != site.baseurl and node.url != "/" %}
   <div class="index-item {% if node.empty %} empty{% endif %}">
-    <a href="{{ site.baseurl.chop! }}{{ node.url }}"> {{ node.title }} </a>
+    <a href="{{ site.baseurl }}{{ node.url }}"> {{ node.title }} </a>
     <small class="sidebar-item-tagline">{{ node.tagline }}</small>
   </div>
 
