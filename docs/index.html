@@ -12,7 +12,9 @@ layout: index
   "page" and node.url != site.baseurl and node.url != "/" %}
   <div class="index-item {% if node.empty %} empty{% endif %}">
     <a href="{{ site.baseurl.chomp('/') }}{{ node.url }}"> {{ node.title }} </a>
-    <small class="sidebar-item-tagline">&nbsp;{{ node.tagline }}</small>
+    <small class="sidebar-item-tagline"
+      >{{ node.tagline }} {{ site.baseurl.chomp("/") }}</small
+    >
   </div>
 
   {% endif %} {% endfor %}
