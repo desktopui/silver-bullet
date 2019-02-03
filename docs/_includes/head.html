@@ -10,8 +10,8 @@
   />
 
   <title>
-    {% if page.tagline %} {{ site.title }} &middot; {{ site.tagline }} {% else
-    %} {{ page.title }} &middot; {{ site.title }} {% endif %}
+    {% if page.title %} {{ page.title }} &middot; {{ page.tagline }} {% else %}
+    {{ site.title }} &middot; {{ site.description }} {% endif %}
   </title>
 
   <!-- CSS -->

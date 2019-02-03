@@ -58,11 +58,18 @@ A lot of code could be shared? So let's do that.
    OS-specific    OS-independent, domain specific
 ```
 
+**If you were developing a web page, do HTML controls would be enough for you, or you'd need SVG, Canvas and WebGL?**
+
+**How many absenct-in-browser APIs would you need to build your app?**
+The bigger the list the more stuff you need from the hardware and operation system, the less about UI framework itself and more about the language and its ecosystem.
+
 We already have a good example: smartphones, where Android and iOS have multiple options like Xamarin, Cordova and React Native,
 but it really depends on you app: either it's game with fully custom render with a lot of shared code
 or just a e-shop?
 
 ## 10 Desktop Applications and the trade-offs
+
+![paper 5](https://user-images.githubusercontent.com/1004115/52180557-e2165d80-27f8-11e9-81b8-bbb0346ea738.png)
 
 **Adobe Photoshop**
 
