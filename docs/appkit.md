@@ -1,11 +1,13 @@
 ---
 layout: page
 title: AppKit
-tagline: "Bonus: in Swift, macOS-only"
+tagline: [Bonus] In Swift, macOS-only
 empty: true
 ---
 
-things that hard to do right:
+Flawed, sometimes inconsistent comparing to UIKit.
+
+Things that hard to do right to imitate:
 
 focus/blurred
 splitview

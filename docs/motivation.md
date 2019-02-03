@@ -115,9 +115,21 @@ Consider something like Macbook Alarm. Almost no UI.
 
 ## Immediate Mode GUI
 
-[IMMEDIATE-MODE GRAPHICAL USER INTERFACES (2005)](https://caseymuratori.com/blog_0001)
+- [IMMEDIATE-MODE GRAPHICAL USER INTERFACES (2005)](https://caseymuratori.com/blog_0001)
 
-See [nuklear](/nuklear) and [imgui][/imgui]
+- [Game loop](http://gameprogrammingpatterns.com/game-loop.html)
+
+See [Nuklear]({{ site.baseurl }}{% link nuklear %}) and [dear-imgui]({{ site.baseurl }}{% link imgui %})
+
+Quote from [Why Qt and not IMGUI?](https://deplinenoise.wordpress.com/2017/03/05/why-qt-and-not-imgui/):
+
+Second, we only have 5 programmers on the tool side. Starting an IMGUI reboot of the level editor would involve fun decisions like:
+
+How are we going to render fonts?
+How are we going to load icons?
+How do we handle resizing layouts?
+How do we handle high DPI?
+Bikeshedding opportunities for all! Using a framework that has reasonable answers to all those questions already means you can start doing what’s important from day one, which is make the damn tool, instead of inventing yet another font renderer.
 
 ## ChatApp is the new TodoMVC
 
