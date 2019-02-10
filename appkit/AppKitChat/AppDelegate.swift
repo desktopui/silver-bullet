@@ -12,10 +12,12 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var outlineView: NSOutlineView!
 
-
+    let channels = Channels()
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        outlineView.dataSource = channels
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -27,3 +29,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+let channels = ["First", "Second"]
+class Channels: NSObject, NSOutlineViewDataSource {
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        return item == nil ? channels.count : 0
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+        return false
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+       
+        return channels[index]
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
+        return "1"
+    }
+    
+    
+}
