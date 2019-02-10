@@ -5,7 +5,7 @@ title: Motivation
 
 - [TL;DR](#tldr)
 - [Do we need apps for desktop anyway? Isn't desktop dying?](#do-we-need-apps-for-desktop-anyway-isnt-desktop-dying)
-- [Do we need GUI frameworks at all?](#do-we-need-gui-frameworks-at-all)
+- [Do we need cross-platform GUI frameworks at all?](#do-we-need-cross-platform-gui-frameworks-at-all)
 - [10 Desktop Applications and the trade-offs](#10-desktop-applications-and-the-trade-offs)
 - ["New Wave" vs "Old school"](#new-wave-vs-old-school)
 - [Immediate Mode GUI](#immediate-mode-gui)
@@ -23,7 +23,7 @@ Well, it depends.
 
 In 2018 Apple said that iOS developers earned $34 billion at App Store. 
 That figure is 28% higher than the $26.5 billion from 2017.
-It's incredibly competitive market, iOS apps, and still you probably would have better chance to get paid by doing apps for iOS, not macOS.
+It's an incredibly competitive market, iOS apps, and still you would probably have better chance to get paid by doing apps for iOS, not macOS.
 
 The mobile has [overtaken](https://netmarketshare.com/device-market-share?options=%7B%22dateLabel%22%3A%22Custom%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22deviceType%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22id%22%3A%22deviceTypes%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22filter%22%3A%7B%7D%2C%22dateStart%22%3A%222017-03%22%2C%22dateEnd%22%3A%222019-01%22%2C%22plotKeys%22%3A%5B%7B%22deviceType%22%3A%22Mobile%22%7D%2C%7B%22deviceType%22%3A%22Desktop%2Flaptop%22%7D%5D%2C%22segments%22%3A%22-1000%22%7D) desktop in many ways, including traffic:
 
@@ -42,7 +42,7 @@ And by looking at effort Microsoft, Google and Apple doing, we might consider th
 
 In the end, it's fun to learn anyway!
 
-## Do we need GUI frameworks at all?
+## Do we need cross-platform GUI frameworks at all?
 
 So we decided that we still need desktop apps sometimes. Do we really need cross-platform UI for that?
 Why we can't use the native library that was meant to be the best?
