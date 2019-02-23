@@ -28,7 +28,7 @@ Tech stack used for building a showcase app:
 ## Internals
 
 The browser is an incredibly complicated piece of software comparable with the Operating System itself.
-There is a lot happening to render these simple HTML + CSS into a pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint it.
+There is a lot happening to render these simple HTML + CSS into pixels that we see on the screen. _I should put here a link to Chrome internals_. Chromium uses cross-platform library **Skia** (skia.org) to paint these pixels.
 
 Let's look at a simple button.
 In order to place it on the screen you need HTML:
@@ -55,7 +55,7 @@ This is the result you get on macOS in Chrome and Electron:
 
 <img width="70" alt="A default button in Chrome" src="https://user-images.githubusercontent.com/1004115/51084515-2e133c80-173c-11e9-869e-7f030a4e1a7a.png">
 
-At first glance it looks like a native button on macOS, but when we press it, we can spot a little difference comparing to the same button in Safari:
+At first glance, it looks like a native button on macOS, but when we press it, we can spot a little difference comparing to the same button in Safari:
 
 ![a pressed button in Chrome](https://user-images.githubusercontent.com/1004115/51084508-0e7c1400-173c-11e9-8e01-afae48d71047.gif)
 
@@ -69,19 +69,19 @@ we can watch a step-by-step demonstration of how the whole document was painted 
 And the button here is just an image of button's background + set of glyphs drawn over it + some transformation logic applied to get the correct size.
 
 So the button in Chrome doesn't match the native look&feel for every operating system out there. But who cares?
-In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design are customized and it probably won't look anything like a default native button anyway:
+In terms of styling, usually for a web site it does not mean a lot, controls are rarely used as it is, their design is customized and it probably won't look anything like a default native button anyway:
 
 <img width="90" alt="A styled button" src="https://user-images.githubusercontent.com/1004115/51088353-9fb8ae00-176f-11e9-9a58-c4c891f6c6a2.png">
 
 This is not always true for the desktop. For a certain group of desktop apps, though, you may want to "mimic" the look to make it closer to system controls.
-That is still possible by carefully crafting the right CSS, but it'll be harder to maintain over the time. As an example, look at the library that provided a set of macOS UI controls called [Maverix](https://screenisland.com/maverix/#/controls), it became outdated the next second Apple released the next macOS version.
+That is still possible by carefully crafting the right CSS, but it'll be harder to maintain over time. As an example, look at the library that provided a set of macOS UI controls called [Maverix](https://screenisland.com/maverix/#/controls), it became outdated the next second Apple released the next macOS version.
 
 Good news, we don't need anything like for the most parts of our [chat app](/#chat-app-is-the-new-todo-list), we can use custom styles.
 
 ## Developer experience
 
-Since Electron is based on a web browser, Chromium in this case, the developer experience for anyone who is already familiar with the web is just amazing.
-For everything that is related to the UI inside a window you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile on every machine your app installed, and infinite amount of integrations with design tools.
+Since Electron is based on a web browser, Chromium, in this case, the developer experience for anyone who is already familiar with the web is just amazing.
+For everything that is related to the UI inside a window, you feel like you just write a web application. You have all sort of hot reloadings, DevTools that allows you to change styles on the fly and profile on every machine your app installed, and an infinite amount of integrations with design tools.
 
 <img width="1041" alt="Simplicity of UI development in Electron — it's basically the same as in the browser" src="https://user-images.githubusercontent.com/1004115/51083744-ef778500-172f-11e9-9ed8-d7665c42757a.png">
 
@@ -89,12 +89,12 @@ The level of **googlability** of any problem is really high, either that is an n
 
 ## Network
 
-What about writing a network code, HTTP and WebSocket in particular?
+What about writing network code, HTTP and WebSocket in particular?
 We can guess just by looking at the names of these protocols, we have **Hyper**text and **Web**Socket here, both invented for the **web** browser, which exactly Electron is.
 Surprisingly, though, HTTP was much more suited initially for interlinked documents, not apps, so all we have is XmlHttpRequest and Fetch and abstractions over them.
-Now, the things are changing and browsers get better. Also, you have WebRTC now and can try to build Skype on top of it.
+Now, things are changing and browsers are getting better. You have WebRTC now and can try to build Skype on top of it.
 
-And again we're writing web application, so to start using Slack's API we'll go to npm:
+And again we're writing a web application, so to start using Slack's API we'll go to npm:
 
 ```
 yarn add @slack/client
@@ -109,7 +109,7 @@ return web.users.list({}).then(results => {
 });
 ```
 
-and also we can use WebSocket-based, real-time client, without even thinking about details:
+and we can also use WebSocket-based, real-time client, without even thinking about details:
 
 ```ts
 const rtm = new RTMClient(token, params);
@@ -121,7 +121,7 @@ rtm.on("message", message => {
 });
 ```
 
-_Here comes a small rant about how hard to write a desktop client for Slack, even though it's understandable from the business' standpoint and I should have probably picked something open sourced. But thanks to the support, turns out it's possible to use undocumented way to use their API. And again, I love web, so easy to debug on live._
+_Here comes a small rant about how hard to write a desktop client for Slack, even though it's understandable from the business' standpoint and I should have probably picked something open sourced. But thanks to the support, turns out it's possible to use undocumented way to use their API. And again, which is one might love web platform, it's so easy to do live debugging_
 
 <img width="1202" alt="Paused debugger for Slack developer section in order to change a scope parameter" src="https://user-images.githubusercontent.com/1004115/51083733-c951e500-172f-11e9-93ea-c918f874e25e.png">
 
@@ -131,7 +131,7 @@ To be able to write an app
 
 <img width="1347" alt="oAuth in a Slack app that does not re-use the browser" src="https://user-images.githubusercontent.com/1004115/51083737-cfe05c80-172f-11e9-854a-96079c04d274.png">
 
-OAuth leveraging existing Slack session in browser.
+OAuth leveraging existing Slack session in the browser.
 
 ## Accessibility (a11y)
 
@@ -187,11 +187,11 @@ I added some semantics and aria attributes:
 
 It's all done in styled-components and React fully supports `aria-` attributes.
 
-So we hide `#` and `we` (needed for the compact mode), and now it looks like menu, and user knows what to expect:
+So we hide `#` and `we` (needed for the compact mode), and now it looks like a menu, and users know what to expect:
 
 <img width="402" alt="The demonstration of Voice over after a small refactoring" src="https://user-images.githubusercontent.com/1004115/51430179-4f869380-1c28-11e9-9276-6b9e889f4ec7.png">
 
-And what's nice, we can use LightHouse to inspect accessiblity since our UI is basically a html opened in web browser and we can use Devtron — a tool to debug Electron apps.
+And what's nice, we can use LightHouse to inspect accessibility since our UI is basically an HTML opened in the web browser and we can use Devtron — a tool to debug Electron apps.
 
 ## Animations
 
